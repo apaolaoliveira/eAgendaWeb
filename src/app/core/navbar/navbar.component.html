@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg navbar-dark app-nav">
+    <div class="container">
+        <a class="navbar-brand fw-semibold" routerLink="/">
+            <i class="bi bi-journal-bookmark ms-2"></i>
+            e-Agenda
+        </a>
+
+        <button 
+            (click)="isCollapse = !isCollapse"
+            class="navbar-toggler" 
+            type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" [ngbCollapse]="isCollapse == true">
+            <div class="links w-100 text-center">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
+                    <li class="nav-item">
+                        <a
+                            class="nav-link text-truncate"
+                            routerLinkActive="fw-semibold"
+                            routerLink="/tasks/list"
+                        >Tasks</a>
+                    </li>
+                    <li class="nav-item">
+                        <a
+                            class="nav-link text-truncate"
+                            routerLinkActive="fw-semibold"
+                            routerLink="/contacts/list"
+                        >Contacts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a
+                            class="nav-link text-truncate"
+                            routerLinkActive="fw-semibold"
+                            routerLink="/appointments/list"
+                        >Appointments</a>
+                    </li>
+                    <li class="nav-item">
+                        <a
+                            class="nav-link text-truncate"
+                            routerLinkActive="fw-semibold"
+                            routerLink="/expenses/list"
+                        >Expenses</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
