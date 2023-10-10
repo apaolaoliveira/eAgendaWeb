@@ -1,14 +1,15 @@
-<div class="container card">
+<div class="container mt-5 ">
     <div class="row">
-        <div class="col-12 col-md-10 col-lg-6 mx-auto">
+        <div class="col-12 col-md-10 col-lg-5 mx-auto app-card">
             <div class="text-md-start">
-                <h1 class="fw-bold text-primary">Inserir Novo Contato</h1>
+                <h1 class="fw-bold d-flex justify-content-center">Create new contact</h1>
             </div>
 
-            <form class="mt-4">
+            <form [formGroup]="form" (ngSubmit)="save()" class="mt-4 fw-semibold">
                 <div class="form-group mb-3 position-relative">
                     <label class="form-label">Name:</label>
                     <input
+                        formControlName="name"
                         class="form-control"
                         type="text"
                         placeholder="Contact's name"
@@ -18,52 +19,56 @@
                 <div class="form-group mb-3 position-relative">
                     <label class="form-label">E-mail:</label>
                     <input
+                    formControlName="email"
                         class="form-control"
                         type="text"
-                        placeholder="Digite o email do contato"
+                        placeholder="Contact's e-mail"
                     />
                 </div>
 
                 <div class="form-group mb-3 position-relative">
                     <label class="form-label">Phone:</label>
                     <input
+                        formControlName="phone"
                         class="form-control"
                         type="text"
-                        placeholder="Digite o telefone do contato"
+                        placeholder="Contact's phone"
                     />
                 </div>
 
                 <div class="form-group mb-3 position-relative">
                     <label class="form-label">Position:</label>
                     <input
+                    formControlName="position"
                         class="form-control"
                         type="text"
-                        placeholder="Digite o cargo do contato"
+                        placeholder="Contact's position"
                     />
                 </div>
 
                 <div class="form-group mb-3 position-relative">
                     <label class="form-label">Company:</label>
                     <input
+                        formControlName="company"
                         class="form-control"
                         type="text"
-                        placeholder="Digite a empresa do contato"
+                        placeholder="Contact's company"
                     />
                 </div>
 
-                <div class="card-footer g-grid d-flex gap-1 mt-5">
-                    <button
-                        type="button"
-                        class="btn btn-primary px-5"
+                <div class="d-flex gap-1 mt-5 justify-content-center">
+                    <button                        
+                        type="submit"
+                        class="btn btn-secondary px-5"
                     >
                         <i class="bi bi-save me-2"></i>
                         Save
                     </button>
 
                     <button
-                        routerLink="/contatos/listar"
+                        routerLink="/contacts/list"
                         type="button"
-                        class="btn btn-outline-primary px-5"
+                        class="btn btn-outline-secondary px-5"
                     >
                         <i class="pi pi-arrow-left me-2"></i>
                         Back

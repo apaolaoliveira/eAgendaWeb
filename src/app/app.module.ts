@@ -8,6 +8,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { DashboardModule } from './views/dashboard/dashboard.module';
 import { CoreModule } from './core/core.module';
+import { ContactsModule } from './views/contacts/contacts.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,7 @@ import { CoreModule } from './core/core.module';
     BrowserAnimationsModule,
     AppRoutingModule,
     NgbModule,
+    HttpClientModule,
     ToastrModule.forRoot({
       timeOut: 5000,
       positionClass: 'toast-bottom-center',
@@ -26,7 +29,8 @@ import { CoreModule } from './core/core.module';
 
     // modules
     CoreModule,
-    DashboardModule
+    DashboardModule,
+    ContactsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
