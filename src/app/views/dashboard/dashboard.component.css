@@ -1,6 +1,6 @@
 .card {
-    background-color: #4b4d4f;
-    color: #d9e6f7;
+    background-color: #323539;
+    color: #eaeaea;
     box-shadow: 0 0 10px rgb(0, 0, 0, 0.5);
     transition: transform 0.3s;
 }
