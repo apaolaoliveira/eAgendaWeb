@@ -5,13 +5,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ContactsService } from './services/contacts.service';
 import { ListContactsComponent } from './list-contacts/list-contacts.component';
 import { RouterModule } from '@angular/router';
+import { EditContactComponent } from './edit-contact/edit-contact.component';
 
 
 
 @NgModule({
   declarations: [
     AddContactComponent,
-    ListContactsComponent
+    ListContactsComponent,
+    EditContactComponent
   ],
   imports: [
     CommonModule,

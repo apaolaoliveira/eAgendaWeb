@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { AddContactComponent } from './views/contacts/add-contact/add-contact.component';
 import { ListContactsComponent } from './views/contacts/list-contacts/list-contacts.component';
+import { EditContactComponent } from './views/contacts/edit-contact/edit-contact.component';
 
 const routes: Routes = [
   {
@@ -15,12 +16,16 @@ const routes: Routes = [
     component: DashboardComponent
   },
   {
+    path: 'contacts/list',
+    component: ListContactsComponent
+  },
+  {
     path: 'contacts/add',
     component: AddContactComponent
   },
   {
-    path: 'contacts/list',
-    component: ListContactsComponent
+    path: 'contacts/edit/:id',
+    component: EditContactComponent
   }
 ];
 

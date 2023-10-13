@@ -14,13 +14,26 @@ export class ContactsService {
     ){}
 
     public add(contact: FormContactViewModel): Observable<FormContactViewModel> {
-        return this.http.post<any>(this.endpoint, contact, this.getAuthorization());
+        return this.http
+        .post<any>(this.endpoint, contact, this.getAuthorization());
+    }
+
+    public edit(id: string, contact: FormContactViewModel): Observable<FormContactViewModel> {
+        return this.http
+        .put<any>(this.endpoint + `/${id}`, contact, this.getAuthorization())
+        .pipe(map(res => res.dados));;
     }
 
     public getAll(): Observable<ListContactViewModel[]>{
         return this.http
         .get<any>(this.endpoint, this.getAuthorization())
         .pipe(map(res => res.dados));
+    }
+
+    public selectContactById(id: string): Observable<FormContactViewModel> {
+        return this.http
+        .get<any>(this.endpoint + `/${id}`, this.getAuthorization())
+        .pipe(map(res => res.dados));;
     }
 
     private getAuthorization(){
