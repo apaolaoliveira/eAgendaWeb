@@ -36,7 +36,7 @@ export class EditContactComponent implements OnInit{
 
     if(!this.selectedId) return;
 
-    this.contactService.selectContactById(this.selectedId).subscribe((res) => {
+    this.contactService.selectById(this.selectedId).subscribe((res) => {
       this.form.setValue(res);
     });
   }

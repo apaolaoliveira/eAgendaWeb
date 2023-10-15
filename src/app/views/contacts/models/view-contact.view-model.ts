@@ -1,4 +1,5 @@
-export class FormContactViewModel {
+export class ViewContactViewModel {
+    id: string;
     nome: string;
     email: string;
     telefone: string;
@@ -6,12 +7,14 @@ export class FormContactViewModel {
     empresa: string;
 
     constructor(
+        id: string,
         nome: string,
         email: string,
         telefone: string,
         cargo: string,
         empresa: string
     ){
+        this.id = id;
         this.nome = nome;
         this.email = email;
         this.telefone = telefone;

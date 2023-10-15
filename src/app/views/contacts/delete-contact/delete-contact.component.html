@@ -1,0 +1,72 @@
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12 col-md-10 col-lg-9 mx-auto">
+            <div class="text-md-start ">
+                <div class="text-md-start">
+                    <h1 class="fw-bold d-flex justify-content-center">Delete Contact</h1>
+                    <hr />
+                </div>
+
+                <h2 class="fs-5 d-flex justify-content-center">
+                    Are you sure about deleting 
+                    <p class="fw-bolder fst-italic"> "{{ contactVM.nome }}"</p> 
+                    contact?
+                </h2>
+            </div>
+
+            <dl class="form-group mt-4 row app-card">
+                <dt class="col-md-4">
+                    <label class="control-label">Name:</label>
+                </dt>
+
+                <dd class="col-md-8">{{ contactVM.nome }}</dd>
+
+                <dt class="col-md-4">
+                    <label class="control-label">Email:</label>
+                </dt>
+
+                <dd class="col-md-8">{{ contactVM.email }}</dd>
+
+                <dt class="col-md-4">
+                    <label class="control-label">Phone:</label>
+                </dt>
+
+                <dd class="col-md-8">{{ contactVM.telefone }}</dd>
+
+                <dt class="col-md-4">
+                    <label class="control-label">Position:</label>
+                </dt>
+
+                <dd class="col-md-8">{{ contactVM.cargo }}</dd>
+
+                <dt class="col-md-4">
+                    <label class="control-label">Company:</label>
+                </dt>
+
+                <dd class="col-md-8">{{ contactVM.empresa }}</dd>
+            </dl>
+
+            <div class="g-grid d-flex gap-1 mt-5 d-flex justify-content-center">
+                <button
+                    (click)="save()"
+                    data-cy="btnDelete"
+                    type="button"
+                    class="btn btn-danger px-5"
+                >
+                    <i class="bi bi-trash-fill me-2"></i>
+                    Delete
+                </button>
+
+                <button
+                    routerLink="/contacts/list"
+                    type="button"
+                    class="btn btn-light px-5"
+                >
+                    <i class="bi bi-arrow-return-left me-2"></i>
+                    Back
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
