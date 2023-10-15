@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ContactsService } from '../services/contacts.service';
 import { Router } from '@angular/router';
 import { FormContactViewModel } from '../models/form-contact.view-model';
@@ -23,15 +23,21 @@ export class AddContactComponent implements OnInit{
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      nome: new FormControl(''),
-      email: new FormControl(''),
-      telefone: new FormControl(''),
-      cargo: new FormControl(''),
-      empresa: new FormControl('')
+      nome: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      telefone: new FormControl('', [Validators.required]),
+      cargo: new FormControl('', [Validators.required]),
+      empresa: new FormControl('', [Validators.required])
     });
   }
 
+  validateField(name: string){
+    return this.form.get(name)!.touched && this.form.get(name)!.invalid;
+  }
+
   save(){
+    if (this.form.invalid) return;
+
     this.contactVM = this.form.value;
 
     this.contactService.add(this.contactVM).subscribe(res => {

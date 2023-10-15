@@ -10,6 +10,7 @@
                     <label class="form-label">Name:</label>
                     <input
                         formControlName="nome"
+                        [ngClass]="validateField('nome')? 'is-invalid' :''"
                         class="form-control"
                         type="text"
                         placeholder="Contact's name"
@@ -20,6 +21,7 @@
                     <label class="form-label">Email:</label>
                     <input
                         formControlName="email"
+                        [ngClass]="validateField('email')? 'is-invalid' :''"
                         class="form-control"
                         type="text"
                         placeholder="Contact's e-mail"
@@ -30,6 +32,7 @@
                     <label class="form-label">Phone:</label>
                     <input
                         formControlName="telefone"
+                        [ngClass]="validateField('telefone')? 'is-invalid' :''"
                         class="form-control"
                         type="text"
                         placeholder="Contact's phone"
@@ -40,6 +43,7 @@
                     <label class="form-label">Position:</label>
                     <input
                         formControlName="cargo"
+                        [ngClass]="validateField('cargo')? 'is-invalid' :''"
                         class="form-control"
                         type="text"
                         placeholder="Contact's position"
@@ -50,6 +54,7 @@
                     <label class="form-label">Company:</label>
                     <input
                         formControlName="empresa"
+                        [ngClass]="validateField('empresa')? 'is-invalid' :''"
                         class="form-control"
                         type="text"
                         placeholder="Contact's company"

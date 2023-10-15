@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormContactViewModel } from '../models/form-contact.view-model';
 import { ContactsService } from '../services/contacts.service';
 import { ToastrService } from 'ngx-toastr';
@@ -25,11 +25,11 @@ export class EditContactComponent implements OnInit{
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      nome: new FormControl(''),
-      email: new FormControl(''),
-      telefone: new FormControl(''),
-      cargo: new FormControl(''),
-      empresa: new FormControl('')
+      nome: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      telefone: new FormControl('', [Validators.required]),
+      cargo: new FormControl('', [Validators.required]),
+      empresa: new FormControl('', [Validators.required])
     });
 
     this.selectedId = this.route.snapshot.paramMap.get('id');
@@ -39,6 +39,10 @@ export class EditContactComponent implements OnInit{
     this.contactService.selectById(this.selectedId).subscribe((res) => {
       this.form.setValue(res);
     });
+  }
+
+  validateField(name: string){
+    return this.form.get(name)!.touched && this.form.get(name)!.invalid;
   }
 
   save(){
