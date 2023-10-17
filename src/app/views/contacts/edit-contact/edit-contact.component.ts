@@ -46,6 +46,11 @@ export class EditContactComponent implements OnInit{
   }
 
   save(){
+    if (this.form.invalid) {
+      this.toast.warning("Check your form's info", "Warning!");
+      return;
+    }
+
     this.contactVM = this.form.value;
 
     this.contactService.edit(this.selectedId!, this.contactVM).subscribe(res => {

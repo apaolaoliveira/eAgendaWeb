@@ -7,6 +7,7 @@ import { ListContactsComponent } from './list-contacts/list-contacts.component';
 import { RouterModule } from '@angular/router';
 import { EditContactComponent } from './edit-contact/edit-contact.component';
 import { DeleteContactComponent } from './delete-contact/delete-contact.component';
+import { CardContactsComponent } from './card-contacts/card-contacts.component';
 
 
 
@@ -15,7 +16,8 @@ import { DeleteContactComponent } from './delete-contact/delete-contact.componen
     AddContactComponent,
     ListContactsComponent,
     EditContactComponent,
-    DeleteContactComponent
+    DeleteContactComponent,
+    CardContactsComponent
   ],
   imports: [
     CommonModule,
