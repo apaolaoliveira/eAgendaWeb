@@ -20,6 +20,10 @@ body {
     padding: 20px;
 }
 
+.ngx-toastr{
+    margin: 5px !important;
+}
+
 ::-webkit-scrollbar{
     width: 7px; 
 }

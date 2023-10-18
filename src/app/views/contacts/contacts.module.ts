@@ -8,8 +8,7 @@ import { RouterModule } from '@angular/router';
 import { EditContactComponent } from './edit-contact/edit-contact.component';
 import { DeleteContactComponent } from './delete-contact/delete-contact.component';
 import { CardContactsComponent } from './card-contacts/card-contacts.component';
-
-
+import 'src/app/extensions/form-group.extensions';
 
 @NgModule({
   declarations: [

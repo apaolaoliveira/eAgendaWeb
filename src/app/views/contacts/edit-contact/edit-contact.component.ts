@@ -47,8 +47,7 @@ export class EditContactComponent implements OnInit{
 
   save(){
     if (this.form.invalid) {
-      this.toast.warning("Check your form's info", "Warning!");
-      this.form.markAllAsTouched();
+      for(let error of this.form.validate()) this.toast.warning(error);
       return;
     }
 
