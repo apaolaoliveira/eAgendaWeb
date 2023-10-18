@@ -13,7 +13,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class EditContactComponent implements OnInit{
   form!: FormGroup;
   contactVM!: FormContactViewModel;
-  selectedId: string | null = null;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -32,13 +31,9 @@ export class EditContactComponent implements OnInit{
       empresa: new FormControl('', [Validators.required])
     });
 
-    this.selectedId = this.route.snapshot.paramMap.get('id');
+    this.contactVM = this.route.snapshot.data['contact'];
 
-    if(!this.selectedId) return;
-
-    this.contactService.selectById(this.selectedId).subscribe((res) => {
-      this.form.setValue(res);
-    });
+    this.form.patchValue(this.contactVM);
   }
 
   validateField(name: string){
@@ -53,7 +48,11 @@ export class EditContactComponent implements OnInit{
 
     this.contactVM = this.form.value;
 
-    this.contactService.edit(this.selectedId! ,this.contactVM).subscribe({
+    const id = this.route.snapshot.paramMap.get('id');
+
+    if(!id) return;
+
+    this.contactService.edit(id ,this.contactVM).subscribe({
       next: (contact: FormContactViewModel) => this.processSuccess(contact),
       error: (err: Error) => this.processFailure(err)     
     });

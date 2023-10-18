@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactsService } from '../services/contacts.service';
 import { ListContactViewModel } from '../models/list-contact.view-model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-list-contacts',
@@ -11,12 +12,10 @@ export class ListContactsComponent implements OnInit{
   contacts: ListContactViewModel[] = [];
 
   constructor(
-    private contactService: ContactsService
+    private route: ActivatedRoute
   ){}
 
   ngOnInit(): void {
-    this.contactService.getAll().subscribe((res) => {
-      this.contacts = res;
-    });
+    this.contacts = this.route.snapshot.data['contact'];
   }
 }

@@ -10,7 +10,6 @@ import { ListContactViewModel } from '../models/list-contact.view-model';
 })
 export class DeleteContactComponent implements OnInit{
   contactVM: ListContactViewModel;
-  selectedId: string | null = null;
 
   constructor(
     private contactService: ContactsService,
@@ -21,17 +20,15 @@ export class DeleteContactComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.selectedId = this.route.snapshot.paramMap.get('id');
-
-    if(!this.selectedId) return;
-
-    this.contactService.selectFullContactById(this.selectedId).subscribe((res) => {
-      this.contactVM = res;
-    });
+    this.contactVM = this.route.snapshot.data['contact'];
   }
 
   save(){
-    this.contactService.delete(this.selectedId!).subscribe((res) => {
+    const id = this.route.snapshot.paramMap.get('id');
+
+    if (!id) return;
+
+    this.contactService.delete(id).subscribe((res) => {
       this.router.navigate(['/contacts/list']);
     });
   }
