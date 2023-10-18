@@ -54,14 +54,14 @@ export class EditContactComponent implements OnInit{
 
     this.contactVM = this.form.value;
 
-    this.contactService.add(this.contactVM).subscribe({
+    this.contactService.edit(this.selectedId! ,this.contactVM).subscribe({
       next: (contact: FormContactViewModel) => this.processSuccess(contact),
       error: (err: Error) => this.processFailure(err)     
     });
   }
 
   processSuccess(contact: FormContactViewModel){
-    this.toast.success(`${contact.nome} was added to your list.`, 'Success!');
+    this.toast.success(`${contact.nome}'s info was edited.`, 'Success!');
     this.router.navigate(['/contacts/list']);
   }
 

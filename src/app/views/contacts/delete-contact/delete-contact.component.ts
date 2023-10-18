@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewContactViewModel } from '../models/view-contact.view-model';
 import { ContactsService } from '../services/contacts.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ListContactViewModel } from '../models/list-contact.view-model';
 
 @Component({
   selector: 'app-delete-contact',
@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./delete-contact.component.css']
 })
 export class DeleteContactComponent implements OnInit{
-  contactVM: ViewContactViewModel;
+  contactVM: ListContactViewModel;
   selectedId: string | null = null;
 
   constructor(
@@ -17,7 +17,7 @@ export class DeleteContactComponent implements OnInit{
     private route: ActivatedRoute,
     private router: Router
   ){
-    this.contactVM = new ViewContactViewModel('', '', '', '', '', '');
+    this.contactVM = new ListContactViewModel('', '', '', '', '', '');
   }
 
   ngOnInit(): void {
@@ -27,7 +27,7 @@ export class DeleteContactComponent implements OnInit{
 
     this.contactService.selectFullContactById(this.selectedId).subscribe((res) => {
       this.contactVM = res;
-    })
+    });
   }
 
   save(){

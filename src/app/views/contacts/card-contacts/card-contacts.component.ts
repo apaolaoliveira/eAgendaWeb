@@ -8,4 +8,5 @@ import { ListContactViewModel } from '../models/list-contact.view-model';
 })
 export class CardContactsComponent {
   @Input({ required: true }) contact!: ListContactViewModel;
+  @Input({ required: true }) isListScreen: boolean = true;
 }

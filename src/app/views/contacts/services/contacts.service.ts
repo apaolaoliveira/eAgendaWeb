@@ -4,7 +4,6 @@ import { Observable, catchError, map, throwError } from "rxjs";
 import { environment } from "src/environments/environment";
 import { FormContactViewModel } from "../models/form-contact.view-model";
 import { ListContactViewModel } from "../models/list-contact.view-model";
-import { ViewContactViewModel } from "../models/view-contact.view-model";
 
 @Injectable()
 export class ContactsService {
@@ -40,15 +39,6 @@ export class ContactsService {
         );
     }
 
-    public getAll(): Observable<ListContactViewModel[]>{
-        return this.http
-        .get<any>(this.endpoint, this.getAuthorization())
-        .pipe(
-            map((res) => res.dados),
-            catchError((err: HttpErrorResponse) => this.processErrorHttp(err))
-        );
-    }
-
     public selectById(id: string): Observable<FormContactViewModel> {
         return this.http
         .get<any>(this.endpoint + id, this.getAuthorization())
@@ -58,7 +48,16 @@ export class ContactsService {
         );
     }
 
-    public selectFullContactById(id: string): Observable<ViewContactViewModel> {
+    public getAll(): Observable<ListContactViewModel[]>{
+        return this.http
+        .get<any>(this.endpoint, this.getAuthorization())
+        .pipe(
+            map((res) => res.dados),
+            catchError((err: HttpErrorResponse) => this.processErrorHttp(err))
+        );
+    }
+
+    public selectFullContactById(id: string): Observable<ListContactViewModel> {
         return this.http
         .get<any>(this.endpoint + 'visualizacao-completa/' + id, this.getAuthorization())
         .pipe(

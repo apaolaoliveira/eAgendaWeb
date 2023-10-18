@@ -9,11 +9,11 @@
 }
 
 body {
-    background-color: #dbe1e7;
+    background-color: #eaeaea;
 }
 
 .app-card {
-    background-color: #323539;
+    background-color: #212529;
     color: #fff;
     box-shadow: 0 0 10px rgb(0, 0, 0, 0.5);
     border-radius: 8px;
