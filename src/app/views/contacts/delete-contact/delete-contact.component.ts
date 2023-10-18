@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ContactsService } from '../services/contacts.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ListContactViewModel } from '../models/list-contact.view-model';
+import { ToastrService } from 'ngx-toastr';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-delete-contact',
@@ -13,6 +15,7 @@ export class DeleteContactComponent implements OnInit{
 
   constructor(
     private contactService: ContactsService,
+    private toast: ToastrService,
     private route: ActivatedRoute,
     private router: Router
   ){
@@ -20,16 +23,29 @@ export class DeleteContactComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.contactVM = this.route.snapshot.data['contact'];
+    this.route.data.pipe(map((data) => data['contact'])).subscribe({
+      next: (contacts) => this.getContacts(contacts),
+      error: (err) => this.processFailure(err)
+    });
   }
 
   save(){
-    const id = this.route.snapshot.paramMap.get('id');
-
-    if (!id) return;
-
-    this.contactService.delete(id).subscribe((res) => {
-      this.router.navigate(['/contacts/list']);
+    this.contactService.delete(this.contactVM.id).subscribe({
+      next: () => this.processSuccess(),
+      error: (err) => this.processFailure(err)
     });
+  }
+  
+  getContacts(contacts: any): void {
+    this.contactVM = contacts;
+  }
+  
+  processSuccess(){
+    this.toast.success('The contact was deleted.', 'Success!');
+    this.router.navigate(['/contacts/list']);
+  }
+  
+  processFailure(err: Error): void {
+    this.toast.error(err.message, 'Erro!');
   }
 }

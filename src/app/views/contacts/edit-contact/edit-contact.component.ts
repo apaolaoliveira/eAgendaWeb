@@ -4,6 +4,7 @@ import { FormContactViewModel } from '../models/form-contact.view-model';
 import { ContactsService } from '../services/contacts.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-edit-contact',
@@ -31,9 +32,10 @@ export class EditContactComponent implements OnInit{
       empresa: new FormControl('', [Validators.required])
     });
 
-    this.contactVM = this.route.snapshot.data['contact'];
-
-    this.form.patchValue(this.contactVM);
+    this.route.data.pipe(map((data) => data['contact'])).subscribe({
+      next: (contacts) => this.getContacts(contacts),
+      error: (err) => this.processFailure(err)
+    });
   }
 
   validateField(name: string){
@@ -56,6 +58,11 @@ export class EditContactComponent implements OnInit{
       next: (contact: FormContactViewModel) => this.processSuccess(contact),
       error: (err: Error) => this.processFailure(err)     
     });
+  }
+
+  getContacts(contacts: FormContactViewModel){
+    this.contactVM = contacts;
+    this.form.patchValue(this.contactVM);
   }
 
   processSuccess(contact: FormContactViewModel){
