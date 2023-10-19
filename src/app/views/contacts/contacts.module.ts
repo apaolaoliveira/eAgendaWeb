@@ -4,10 +4,10 @@ import { AddContactComponent } from './add-contact/add-contact.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ContactsService } from './services/contacts.service';
 import { ListContactsComponent } from './list-contacts/list-contacts.component';
-import { RouterModule } from '@angular/router';
 import { EditContactComponent } from './edit-contact/edit-contact.component';
 import { DeleteContactComponent } from './delete-contact/delete-contact.component';
 import { CardContactsComponent } from './card-contacts/card-contacts.component';
+import { ContactsRoutingModule } from './contacts-routing.module';
 import 'src/app/extensions/form-group.extensions';
 
 @NgModule({
@@ -21,7 +21,7 @@ import 'src/app/extensions/form-group.extensions';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule
+    ContactsRoutingModule
   ],
   providers: [
     ContactsService

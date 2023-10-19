@@ -8,7 +8,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { DashboardModule } from './views/dashboard/dashboard.module';
 import { CoreModule } from './core/core.module';
-import { ContactsModule } from './views/contacts/contacts.module';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -27,10 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
       preventDuplicates: true
     }),
 
-    // modules
     CoreModule,
-    DashboardModule,
-    ContactsModule
+    DashboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,6 +4,13 @@ import { AddAppointmentComponent } from './add-appointment/add-appointment.compo
 import { DeleteAppointmentComponent } from './delete-appointment/delete-appointment.component';
 import { EditAppointmentComponent } from './edit-appointment/edit-appointment.component';
 import { ListAppointmentComponent } from './list-appointment/list-appointment.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule } from '@angular/router';
+import { ContactsModule } from '../contacts/contacts.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AppointmentsService } from './services/appointments.service';
+import { CardAppointmentsComponent } from './card-appointments/card-appointments.component';
+import { AppointmentsRoutingModule } from './appointments-routing.module';
 
 
 
@@ -12,10 +19,18 @@ import { ListAppointmentComponent } from './list-appointment/list-appointment.co
     AddAppointmentComponent,
     DeleteAppointmentComponent,
     EditAppointmentComponent,
-    ListAppointmentComponent
+    ListAppointmentComponent,
+    CardAppointmentsComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    NgbModule,
+    ReactiveFormsModule,
+    AppointmentsRoutingModule,
+    ContactsModule
+  ],
+  providers: [
+    AppointmentsService
   ]
 })
 export class AppointmentsModule { }
