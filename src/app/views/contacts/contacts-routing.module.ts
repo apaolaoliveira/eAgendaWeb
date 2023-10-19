@@ -1,6 +1,5 @@
 import { NgModule, inject } from "@angular/core";
 import { ResolveFn, ActivatedRouteSnapshot, Routes, RouterModule } from "@angular/router";
-import { DashboardComponent } from "../dashboard/dashboard.component";
 import { AddContactComponent } from "./add-contact/add-contact.component";
 import { DeleteContactComponent } from "./delete-contact/delete-contact.component";
 import { EditContactComponent } from "./edit-contact/edit-contact.component";

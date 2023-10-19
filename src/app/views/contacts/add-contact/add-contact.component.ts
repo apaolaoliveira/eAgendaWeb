@@ -7,8 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-contact',
-  templateUrl: './add-contact.component.html',
-  styleUrls: ['./add-contact.component.css']
+  templateUrl: './add-contact.component.html'
 })
 export class AddContactComponent implements OnInit{
   form!: FormGroup;

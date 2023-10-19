@@ -9,8 +9,7 @@ import { ListContactViewModel } from '../../contacts/models/list-contact.view-mo
 
 @Component({
   selector: 'app-add-appointment',
-  templateUrl: './add-appointment.component.html',
-  styleUrls: ['./add-appointment.component.css']
+  templateUrl: './add-appointment.component.html'
 })
 export class AddAppointmentComponent implements OnInit{
   form!: FormGroup;

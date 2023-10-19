@@ -6,8 +6,7 @@ import { map } from 'rxjs';
 
 @Component({
   selector: 'app-list-appointment',
-  templateUrl: './list-appointment.component.html',
-  styleUrls: ['./list-appointment.component.css']
+  templateUrl: './list-appointment.component.html'
 })
 export class ListAppointmentComponent implements OnInit{
   appointments: ListAppointmentViewModel[] = [];

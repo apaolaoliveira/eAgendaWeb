@@ -8,8 +8,7 @@ import { map } from 'rxjs';
 
 @Component({
   selector: 'app-edit-contact',
-  templateUrl: './edit-contact.component.html',
-  styleUrls: ['./edit-contact.component.css']
+  templateUrl: './edit-contact.component.html'
 })
 export class EditContactComponent implements OnInit{
   form!: FormGroup;

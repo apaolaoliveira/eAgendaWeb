@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-edit-category',
-  templateUrl: './edit-category.component.html',
-  styleUrls: ['./edit-category.component.css']
+  templateUrl: './edit-category.component.html'
 })
 export class EditCategoryComponent {
 

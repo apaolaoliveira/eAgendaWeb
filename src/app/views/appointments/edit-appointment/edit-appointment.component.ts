@@ -10,8 +10,7 @@ import { map } from 'rxjs';
 
 @Component({
   selector: 'app-edit-appointment',
-  templateUrl: './edit-appointment.component.html',
-  styleUrls: ['./edit-appointment.component.css']
+  templateUrl: './edit-appointment.component.html'
 })
 export class EditAppointmentComponent implements OnInit{
   form!: FormGroup;

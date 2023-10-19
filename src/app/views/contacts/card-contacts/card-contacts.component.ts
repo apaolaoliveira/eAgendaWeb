@@ -3,8 +3,7 @@ import { ListContactViewModel } from '../models/list-contact.view-model';
 
 @Component({
   selector: 'app-card-contacts',
-  templateUrl: './card-contacts.component.html',
-  styleUrls: ['./card-contacts.component.css']
+  templateUrl: './card-contacts.component.html'
 })
 export class CardContactsComponent {
   @Input({ required: true }) contact!: ListContactViewModel;

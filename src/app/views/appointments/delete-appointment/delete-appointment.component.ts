@@ -7,8 +7,7 @@ import { map } from 'rxjs';
 
 @Component({
   selector: 'app-delete-appointment',
-  templateUrl: './delete-appointment.component.html',
-  styleUrls: ['./delete-appointment.component.css']
+  templateUrl: './delete-appointment.component.html'
 })
 export class DeleteAppointmentComponent implements OnInit{
   appointmentVM!: ListAppointmentViewModel;

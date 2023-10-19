@@ -7,8 +7,7 @@ import { map } from 'rxjs';
 
 @Component({
   selector: 'app-list-contacts',
-  templateUrl: './list-contacts.component.html',
-  styleUrls: ['./list-contacts.component.css']
+  templateUrl: './list-contacts.component.html'
 })
 export class ListContactsComponent implements OnInit{
   contacts: ListContactViewModel[] = [];

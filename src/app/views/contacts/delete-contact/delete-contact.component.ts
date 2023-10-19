@@ -7,8 +7,7 @@ import { map } from 'rxjs';
 
 @Component({
   selector: 'app-delete-contact',
-  templateUrl: './delete-contact.component.html',
-  styleUrls: ['./delete-contact.component.css']
+  templateUrl: './delete-contact.component.html'
 })
 export class DeleteContactComponent implements OnInit{
   contactVM: ListContactViewModel;
