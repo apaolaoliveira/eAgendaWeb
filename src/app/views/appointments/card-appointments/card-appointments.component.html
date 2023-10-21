@@ -5,8 +5,8 @@
                 {{ appointment.assunto }}
             </h5>
         </div>
-        <span class="card-text">{{ appointment.data }}</span>
-        <span class="card-text">with {{ appointment.nomeContato }}</span>
+        <span class="card-text">{{ appointment.data | date}}</span>
+        <span *ngIf="isListScreen" class="card-text">with {{ appointment.nomeContato }}</span>
         <span class="card-text fw-semibold">Start time: {{ appointment.horaInicio }}</span>
         <span class="card-text fw-semibold"> End time: {{ appointment.horaTermino }}</span>
     </div>

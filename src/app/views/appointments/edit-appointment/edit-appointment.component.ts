@@ -74,6 +74,9 @@ export class EditAppointmentComponent implements OnInit{
   getAppointments(appointments: FormAppointmentViewModel){
     this.appointmentVM = appointments;
     this.form.patchValue(this.appointmentVM);
+
+    const dateFormat = this.appointmentVM.data.toString().substring(0, 10);
+    this.form.patchValue({ data: dateFormat });
   }
 
   processSuccess(appointment: FormAppointmentViewModel){
