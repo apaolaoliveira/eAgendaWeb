@@ -35,7 +35,6 @@ export class AddCategoryComponent implements OnInit{
       return;
     }
 
-
     this.categoryService.add(this.form.value).subscribe({
       next: (category: FormCategoryViewModel) => this.processSuccess(category),
       error: (err: Error) => this.processFailure(err)     
