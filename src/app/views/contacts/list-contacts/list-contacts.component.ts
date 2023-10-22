@@ -18,7 +18,7 @@ export class ListContactsComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
-    this.route.data.pipe(map((data) => data['contact'])).subscribe({
+    this.route.data.pipe(map((data) => data['contacts'])).subscribe({
       next: (contacts) => this.getContacts(contacts),
       error: (err) => this.processFailure(err)
     });

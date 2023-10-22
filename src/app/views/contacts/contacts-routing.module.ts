@@ -33,7 +33,7 @@ const routes: Routes = [
     {
         path: 'list',
         component: ListContactsComponent,
-        resolve: { contact: listContactResolver }
+        resolve: { contacts: listContactResolver }
     },
     {
         path: 'add',
@@ -42,12 +42,12 @@ const routes: Routes = [
     {
         path: 'edit/:id',
         component: EditContactComponent,
-        resolve: { contact: formsContactResolver }
+        resolve: { contacts: formsContactResolver }
     },
     {
         path: 'delete/:id',
         component: DeleteContactComponent,
-        resolve: { contact: viewContactResolver}
+        resolve: { contacts: viewContactResolver}
     }
 ];
 

@@ -6,7 +6,6 @@
             </h5>
         </div>
         <span class="card-text">{{ contact.telefone }}</span>
-        <span class="card-text">{{ contact.email }}</span>
         <span class="card-text fw-semibold">{{ contact.cargo }}, {{ contact.empresa }}</span>
     </div>
     
@@ -31,5 +30,15 @@
         >
             <i class="bi bi-trash"></i>
         </button>
+        <!-- <button
+            class="btn btn-outline-info py-2"
+            routerLink="/appointments/details/{{ contact.id }}"
+            aria-label="Details"
+            ngbTooltip="Details"
+            placement="bottom"
+            *ngIf="isListScreen"
+        >
+            <i class="bi bi-three-dots-vertical"></i>
+        </button> -->
     </div>
 </div>

@@ -9,6 +9,7 @@ import { DeleteContactComponent } from './delete-contact/delete-contact.componen
 import { CardContactsComponent } from './card-contacts/card-contacts.component';
 import { ContactsRoutingModule } from './contacts-routing.module';
 import 'src/app/extensions/form-group.extensions';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import 'src/app/extensions/form-group.extensions';
   ],
   imports: [
     CommonModule,
+    NgbModule,
     ReactiveFormsModule,
     ContactsRoutingModule
   ],

@@ -5,5 +5,5 @@ import { Component } from '@angular/core';
   templateUrl: './list-expenses.component.html'
 })
 export class ListExpensesComponent {
-
+  expenses: string[] = [];
 }

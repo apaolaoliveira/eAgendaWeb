@@ -34,7 +34,7 @@ const routes: Routes = [
     {
         path: 'list',
         component: ListAppointmentComponent,
-        resolve: { appointment: listAppointmentResolver }
+        resolve: { appointments: listAppointmentResolver }
     },
     {
         path: 'add',
@@ -43,12 +43,12 @@ const routes: Routes = [
     {
         path: 'edit/:id',
         component: EditAppointmentComponent,
-        resolve: { appointment: formsAppointmentResolver }
+        resolve: { appointments: formsAppointmentResolver }
     },
     {
         path: 'delete/:id',
         component: DeleteAppointmentComponent,
-        resolve: { appointment: viewAppointmentResolver}
+        resolve: { appointments: viewAppointmentResolver}
     }
 ];
 

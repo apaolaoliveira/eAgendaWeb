@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
   isCollapse: boolean = true;
+  isDarkMode: boolean = true;
+
+  toggleMode(){
+    this.isDarkMode = !this.isDarkMode;
+  }
 }

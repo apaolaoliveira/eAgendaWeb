@@ -22,6 +22,21 @@ const routes: Routes = [
     path: 'appointments',
     loadChildren: () => 
     import('./views/appointments/appointments.module').then((m) => m.AppointmentsModule)
+  },
+  {
+    path: 'categories',
+    loadChildren: () => 
+    import('./views/categories/categories.module').then((m) => m.CategoriesModule)
+  },
+  {
+    path: 'expenses',
+    loadChildren: () => 
+    import('./views/expenses/expenses.module').then((m) => m.ExpensesModule)
+  },
+  {
+    path: 'tasks',
+    loadChildren: () => 
+    import('./views/tasks/tasks.module').then((m) => m.TasksModule)
   }
 ];
 

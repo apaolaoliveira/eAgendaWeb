@@ -43,7 +43,7 @@ export class EditAppointmentComponent implements OnInit{
       this.contacts = contacts;
     });
 
-    this.route.data.pipe(map((data) => data['appointment'])).subscribe({
+    this.route.data.pipe(map((data) => data['appointments'])).subscribe({
       next: (appointments) => this.getAppointments(appointments),
       error: (err) => this.processFailure(err)
     });
