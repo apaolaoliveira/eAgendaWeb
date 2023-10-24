@@ -43,6 +43,6 @@ export class DeleteExpenseComponent implements OnInit{
   }
   
   processFailure(err: Error): void {
-    this.toast.error(err.message, 'Erro!');
+    this.toast.error(err.message, 'Error!');
   }
 }

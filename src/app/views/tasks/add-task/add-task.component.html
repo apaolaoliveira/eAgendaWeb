@@ -1,1 +1,113 @@
-<p>add-task works!</p>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12 col-md-10 col-lg-5 mx-auto app-card">
+            <div class="text-md-start">
+                <h1 class="fw-bold d-flex justify-content-center">Create new task</h1>
+            </div>
+
+            <form [formGroup]="form!" (ngSubmit)="save()" class="mt-4 fw-semibold">
+                <div class="form-group mb-3 position-relative">
+                    <label class="form-label">Title:</label>
+                    <input
+                        [ngClass]="validateField('titulo') ? 'is-invalid' : ''"
+                        formControlName="titulo"
+                        class="form-control"
+                        type="text"
+                        placeholder="Task's title"
+                    />
+                </div>
+
+                <div class="form-group mb-3 position-relative">
+                    <label class="form-label">Priority:</label>
+                    <ng-select
+                        formControlName="prioridade"
+                        [searchable]="false"
+                        [clearable]="false"
+                    >
+                        <ng-option [value]="0">Baixa</ng-option>
+                        <ng-option [value]="1">Normal</ng-option>
+                        <ng-option [value]="2">Alta</ng-option>
+                    </ng-select>
+                </div>
+
+                <hr />
+                <h2 class="fw-bold d-flex justify-content-center mt-4">Task's Items</h2>
+
+                <fieldset class="my-3">
+                    <div class="form-group position-relative">
+                        <label class="form-label">Title:</label>
+
+                        <div class="d-flex gap-2">
+                            <input
+                                [formControl]="itemTitleControl!"
+                                class="form-control"
+                                type="text"
+                                placeholder="Item's title"
+                            />
+
+                            <button
+                                (click)="addItem()"
+                                type="button"
+                                class="btn btn-primary"
+                            >
+                                Add
+                            </button>
+                        </div>
+                    </div>
+
+                    <table class="table table-light table-striped table-hover table-borderless mt-4">
+                        <thead class="thead-dark text-center">
+                            <tr>
+                                <th>Title</th>
+                                <th>Status</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+
+                        <tbody class="text-center">
+                            <tr *ngFor="let item of itens.controls; let i = index">
+                                <td>{{ item.get("titulo")?.value }}</td>
+                                <td>
+                                    {{
+                                        item.get("concluido")?.value == true
+                                        ? "Concluído"
+                                        : "Pendente"
+                                    }}
+                                </td>
+
+                                <td class="d-grid d-md-block">
+                                    <button
+                                        (click)="deleteItem(i)"
+                                        type="button"
+                                        class="btn btn-sm btn-outline-danger me-0 me-md-1 mb-1 mb-md-auto"
+                                    >
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </fieldset>
+
+                <div class="d-flex gap-1 mt-5 justify-content-center">
+                    <button                        
+                        type="submit"
+                        class="btn btn-primary px-5"
+                    >
+                        <i class="bi bi-floppy me-2"></i>
+                        Save
+                    </button>
+
+                    <button
+                        routerLink="/tasks/list"
+                        type="button"
+                        class="btn btn-outline-light px-5"
+                    >
+                        <i class="bi bi-arrow-left me-2"></i>
+                        Back
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

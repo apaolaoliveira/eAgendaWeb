@@ -1,1 +1,39 @@
-<p>delete-task works!</p>
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12 col-md-8 col-lg-5 mx-auto">
+            <div class="text-md-start ">
+                <div class="text-md-start">
+                    <h1 class="fw-bold d-flex justify-content-center">Delete Task</h1>
+                    <hr />
+                </div>
+
+                <h2 class="fs-5 d-flex justify-content-center">
+                    Are you sure about deleting this task?
+                </h2>
+            </div>
+
+            <app-card-tasks [task]="taskVM" [isListScreen]="false"></app-card-tasks>
+
+            <div class="g-grid d-flex gap-1 mt-5 d-flex justify-content-center">
+                <button
+                    (click)="save()"
+                    data-cy="btnDelete"
+                    type="button"
+                    class="btn btn-danger px-5"
+                >
+                    <i class="bi bi-trash-fill me-2"></i>
+                    Delete
+                </button>
+
+                <button
+                    routerLink="/tasks/list"
+                    type="button"
+                    class="btn btn-outline-dark px-5"
+                >
+                    <i class="bi bi-arrow-return-left me-2"></i>
+                    Back
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

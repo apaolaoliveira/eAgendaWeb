@@ -1,3 +1,3 @@
-export enum StatusItemTarefa {
+export enum ItemStatusEnum {
     Inalterado, Adicionado, Removido 
 }

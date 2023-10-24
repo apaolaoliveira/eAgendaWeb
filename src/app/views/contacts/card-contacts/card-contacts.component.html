@@ -6,6 +6,7 @@
             </h5>
         </div>
         <span class="card-text">{{ contact.telefone }}</span>
+        <span *ngIf="isListScreen" class="card-text">{{ contact.email }}</span>
         <span class="card-text fw-semibold">{{ contact.cargo }}, {{ contact.empresa }}</span>
     </div>
     

@@ -9,8 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TasksRoutingModule } from './tasks-routing.module';
 import { TasksService } from './services/tasks.service';
-
-
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -24,7 +23,8 @@ import { TasksService } from './services/tasks.service';
     CommonModule,
     NgbModule,
     ReactiveFormsModule,
-    TasksRoutingModule
+    TasksRoutingModule,
+    NgSelectModule
   ],
   providers: [
     TasksService

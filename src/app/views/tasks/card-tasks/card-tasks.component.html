@@ -1,1 +1,35 @@
-<p>card-tasks works!</p>
+<div class="card bg-dark rounded-3">
+    <div class="card-body d-flex flex-column gap-1 text-light">
+        <div class="d-flex bg- rounded-3 text-light text-uppercase">
+            <h5 class="card-title mb-1 fw-bold">
+                {{ task.titulo }}
+            </h5>
+        </div>
+        <span class="card-text">{{ task.dataCriacao | date}}</span>
+        <span class="card-text">Priority: {{ task.prioridade }}</span>
+        <span class="card-text">Situation: {{ task.situacao }}</span>
+    </div>
+    
+    <div class="d-flex gap-1 justify-content-end card-footer">
+        <button
+            class="btn btn-outline-warning py-2"
+            routerLink="/tasks/edit/{{ task.id }}"
+            aria-label="Edit"
+            ngbTooltip="Edit"
+            placement="bottom"
+            *ngIf="isListScreen"
+        >
+            <i class="bi bi-pen"></i>
+        </button>
+        <button
+            class="btn btn-outline-danger py-2"
+            routerLink="/tasks/delete/{{ task.id }}"
+            aria-label="Delete"
+            ngbTooltip="Delete"
+            placement="bottom"
+            *ngIf="isListScreen"
+        >
+            <i class="bi bi-trash"></i>
+        </button>
+    </div>
+</div>
