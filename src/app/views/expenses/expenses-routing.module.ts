@@ -8,6 +8,7 @@ import { FormExpenseViewModel } from "./models/form-expense.view-model";
 import { ListExpenseViewModel } from "./models/list-expense.view-model";
 import { ViewExpenseViewModel } from "./models/view-expense.view-model";
 import { ExpensesService } from "./services/expense.service";
+import { EditExpenseComponent } from "./edit-expense/edit-expense.component";
 
 const formsExpenseResolver: ResolveFn<FormExpenseViewModel> = (
     route: ActivatedRouteSnapshot
@@ -42,7 +43,7 @@ const routes: Routes = [
     },
     {
         path: 'edit/:id',
-        component: EditAppointmentComponent,
+        component: EditExpenseComponent,
         resolve: { expenses: formsExpenseResolver }
     },
     {

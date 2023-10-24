@@ -10,6 +10,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ExpensesRoutingModule } from './expenses-routing.module';
 import { CategoriesModule } from '../categories/categories.module';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 
@@ -24,9 +25,10 @@ import { CategoriesModule } from '../categories/categories.module';
   imports: [
     CommonModule,
     NgbModule,
-    ReactiveFormsModule,
     ExpensesRoutingModule,
-    CategoriesModule
+    CategoriesModule,
+    ReactiveFormsModule,
+    NgSelectModule
   ],
   providers: [
     ExpensesService

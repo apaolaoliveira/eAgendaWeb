@@ -20,7 +20,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CardContactsComponent
   ],
   imports: [
-    CommonModule,
+    CommonModule, 
     NgbModule,
     ReactiveFormsModule,
     ContactsRoutingModule
