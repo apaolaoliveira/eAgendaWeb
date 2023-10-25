@@ -34,9 +34,9 @@ export class EditAppointmentComponent implements OnInit{
       link: new FormControl(''),
       local: new FormControl(''),
       data: new FormControl(new Date, [Validators.required]),
-      horaInicio: new FormControl('00:00', [Validators.required]),
-      horaTermino: new FormControl('00:00', [Validators.required]),
-      contatoId: new FormControl('')
+      horaInicio: new FormControl('', [Validators.required]),
+      horaTermino: new FormControl('', [Validators.required]),
+      contatoId: new FormControl('', [Validators.required])
     });
 
     this.contactService.getAll().subscribe((contacts) =>{

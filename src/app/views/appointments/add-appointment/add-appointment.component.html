@@ -9,6 +9,7 @@
                 <div class="form-group mb-3 position-relative">
                     <label class="form-label">Subject:</label>
                         <input
+                            [ngClass]="validateField('assunto')? 'is-invalid' :''"
                             formControlName="assunto"
                             class="form-control"
                             type="text"
@@ -17,48 +18,54 @@
                 </div>
 
                 <div class="form-group mb-3 position-relative">
-                    <label class="form-label">Appointment's type:</label>
-                    
-                    <div class="d-flex align-items-center gap-2">
-                        <input name="tipoLocal" formControlName="tipoLocal" type="radio" [value]="0" />
-                        Online
-
-                        <input name="tipoLocal" formControlName="tipoLocal" type="radio" [value]="1" />
-                        In person
-                    </div>
+                    <label for="tipoLocal" class="form-label">Location Type:</label>
+                    <select
+                        [ngClass]="validateField('tipoLocal') ? 'is-invalid' : ''"
+                        name="tipoLocal"
+                        class="form-select"
+                        formControlName="tipoLocal"
+                    >
+                        <option [ngValue]="0">Online</option>
+                        <option [ngValue]="1">In person</option>
+                    </select>
                 </div>
 
-                <!-- todo: fix link and location to appear just with the value of tipoLocal -->
-
-                <div class="form-group mb-3 position-relative">
-                    <label class="form-label">Link:</label>
-                        <input
-                            formControlName="link"
-                            class="form-control"
-                            type="text"
-                            placeholder="Appointment's link"
-                        />
-                </div>
-
-                <div class="form-group mb-3 position-relative">
-                    <label class="form-label">Location:</label>
+                <div class="mb-3" *ngIf="form.get('tipoLocal')?.value == 0">
+                    <label for="link" class="form-label">Link:</label>
                     <input
-                        formControlName="local"
-                        class="form-control"
                         type="text"
+                        name="link"
+                        class="form-control"
+                        formControlName="link"
+                        placeholder="Appointment's link"
+                    />
+                </div>
+        
+                <div class="mb-3" *ngIf="form.get('tipoLocal')?.value == 1">
+                    <label for="local" class="form-label">Location:</label>
+                    <input
+                        type="text"
+                        name="local"
+                        class="form-control"
+                        formControlName="local"
                         placeholder="Appointment's location"
                     />
                 </div>
 
                 <div class="form-group mb-3 position-relative">
                     <label class="form-label">Date:</label>
-                    <input class="form-control" formControlName="data" type="date" />
+                    <input 
+                        [ngClass]="validateField('data')? 'is-invalid' :''"
+                        class="form-control" 
+                        formControlName="data" 
+                        type="date" />
                 </div>
 
                 <div class="form-group mb-3 position-relative row">
                     <div class="col-6">
                         <label class="form-label">Start time:</label>
                         <input
+                            [ngClass]="validateField('horaInicio')? 'is-invalid' :''"
                             formControlName="horaInicio"
                             class="form-control"
                             type="time"
@@ -69,6 +76,7 @@
                     <div class="col">
                         <label class="form-label">End time:</label>
                         <input
+                            [ngClass]="validateField('horaTermino')? 'is-invalid' :''"
                             formControlName="horaTermino"
                             class="form-control"
                             type="time"
@@ -79,7 +87,7 @@
 
                 <div class="form-group mb-3 position-relative">
                     <label class="form-label">Contact:</label>
-                    <select class="form-select" name="contatoId" formControlName="contatoId" >
+                    <select class="form-select" name="contatoId" formControlName="contatoId" [ngClass]="validateField('contatoId')? 'is-invalid' :''">
                         <option *ngFor="let contact of contacts" [ngValue]="contact.id">{{ contact.nome }}</option>
                     </select>
                 </div>

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ListAppointmentViewModel } from '../models/list-appointment.view-module';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-card-appointments',

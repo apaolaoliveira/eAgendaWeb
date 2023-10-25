@@ -33,7 +33,7 @@ export class DeleteAppointmentComponent implements OnInit{
     });
   }
   
-  getAppointments(appointments: any): void {
+  getAppointments(appointments: ListAppointmentViewModel): void {
     this.appointmentVM = appointments;
   }
   
