@@ -5,6 +5,7 @@ export class ListContactViewModel {
     telefone: string;
     cargo: string;
     empresa: string;
+    favorito: boolean;
 
     constructor(
         id: string,
@@ -12,7 +13,8 @@ export class ListContactViewModel {
         email: string,
         telefone: string,
         cargo: string,
-        empresa: string
+        empresa: string,
+        favorito: boolean
     ){
         this.id = id;
         this.nome = nome;
@@ -20,5 +22,6 @@ export class ListContactViewModel {
         this.telefone = telefone;
         this.cargo = cargo;
         this.empresa =  empresa;
+        this.favorito = favorito;
     }
 }

@@ -67,6 +67,15 @@ export class ContactsService {
         );
     }
 
+    public updateFavorite(id: string): Observable<ListContactViewModel>{
+        return this.http
+        .put<any>(this.endpoint + 'favoritos/' + id, {}, this.getAuthorization())
+        .pipe(
+            map((res) => res.dados),
+            catchError((err: HttpErrorResponse) => this.processErrorHttp(err))
+        );
+    }
+
     processErrorHttp(err: HttpErrorResponse){
         let message = '';
 

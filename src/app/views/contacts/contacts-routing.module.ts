@@ -7,6 +7,7 @@ import { ListContactsComponent } from "./list-contacts/list-contacts.component";
 import { FormContactViewModel } from "./models/form-contact.view-model";
 import { ListContactViewModel } from "./models/list-contact.view-model";
 import { ContactsService } from "./services/contacts.service";
+import { ViewContactViewModel } from "./models/view-contact.view-model";
 
 const formsContactResolver: ResolveFn<FormContactViewModel> = (
     route: ActivatedRouteSnapshot
@@ -18,7 +19,7 @@ const listContactResolver: ResolveFn<ListContactViewModel[]> = () => {
     return inject(ContactsService).getAll();
 }
 
-const viewContactResolver: ResolveFn<ListContactViewModel> = (
+const viewContactResolver: ResolveFn<ViewContactViewModel> = (
     route: ActivatedRouteSnapshot
 ) => {
     return inject(ContactsService).selectFullContactById(route.paramMap.get('id')!);

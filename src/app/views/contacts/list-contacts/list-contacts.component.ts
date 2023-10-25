@@ -11,6 +11,7 @@ import { map } from 'rxjs';
 })
 export class ListContactsComponent implements OnInit{
   contacts: ListContactViewModel[] = [];
+  selectedFilter: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -20,8 +21,10 @@ export class ListContactsComponent implements OnInit{
   ngOnInit(): void {
     this.route.data.pipe(map((data) => data['contacts'])).subscribe({
       next: (contacts) => this.getContacts(contacts),
-      error: (err) => this.processFailure(err)
+      error: (err: Error) => this.processFailure(err)
     });
+
+    this.selectedFilter = 'all';
   }
 
   getContacts(contacts: ListContactViewModel[]){
@@ -30,5 +33,14 @@ export class ListContactsComponent implements OnInit{
 
   processFailure(error: Error){
     this.toast.error(error.message, 'Error!');
+  }
+
+  filterContacts() {
+    if (this.selectedFilter === 'all')  return this.contacts;
+    
+    else if (this.selectedFilter === 'favorites') 
+      return this.contacts.filter(contact => contact.favorito);
+
+    return null;
   }
 }

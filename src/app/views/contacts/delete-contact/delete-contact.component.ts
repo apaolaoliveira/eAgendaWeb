@@ -18,7 +18,7 @@ export class DeleteContactComponent implements OnInit{
     private route: ActivatedRoute,
     private router: Router
   ){
-    this.contactVM = new ListContactViewModel('', '', '', '', '', '');
+    this.contactVM = new ListContactViewModel('', '', '', '', '', '', false);
   }
 
   ngOnInit(): void {
