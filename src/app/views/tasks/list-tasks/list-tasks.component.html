@@ -17,10 +17,37 @@
                 </a>
             </div>
 
-            <!-- todo: Add filter by priority -->
+            <div class="row g-2 mt-2" style="cursor: pointer;">
+                <div class="col-6 col-lg-1" (click)="selectedFilter = 'all'">
+                    <span
+                        ngbTooltip="All tasks"
+                        placement="bottom"
+                        class="app-badge-filter badge rounded-pill w-100 p-2 fs-6 fw-semibold"
+                        [ngClass]="selectedFilter === 'all' ? 'border bg-secondary text-light' : 'bg-dark border'"
+                    >All</span>
+                </div>
+            
+                <div class="col-6 col-lg-1" (click)="selectedFilter = 'pending'">
+                    <span
+                        ngbTooltip="Pending tasks"
+                        placement="bottom"
+                        class="app-badge-filter badge rounded-pill w-100 p-2 fs-6 fw-semibold"
+                        [ngClass]="selectedFilter === 'pending' ? 'border bg-secondary text-light' : 'bg-dark border'"
+                        >Pending</span>
+                </div>
+
+                <div class="col-6 col-lg-1" (click)="selectedFilter = 'done'">
+                    <span
+                        ngbTooltip="Done tasks"
+                        placement="bottom"
+                        class="app-badge-filter badge rounded-pill w-100 p-2 fs-6 fw-semibold"
+                        [ngClass]="selectedFilter === 'done' ? 'border bg-secondary text-light' : 'bg-dark border'"
+                        >Done</span>
+                </div>                
+            </div>
 
             <div class="row mt-3 g-2">
-                <div class="col-12 col-lg-4 col-md-6" *ngFor="let task of tasks">
+                <div class="col-12 col-lg-4 col-md-6" *ngFor="let task of filterByConclusion()">
                     <app-card-tasks [task]="task" [isListScreen]="true"></app-card-tasks>
                 </div>                
             </div>
