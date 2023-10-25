@@ -67,6 +67,24 @@ export class ExpensesService {
         );
     }
 
+    public selectOldExpenses(): Observable<ListExpenseViewModel[]>{
+        return this.http
+        .get<any>(this.endpoint + 'antigas', this.getAuthorization())
+        .pipe(
+            map((res) => res.dados),
+            catchError((erro: HttpErrorResponse) => this.processErrorHttp(erro))
+        );
+    }
+
+    public selectPastMonth(): Observable<ListExpenseViewModel[]>{
+        return this.http
+        .get<any>( this.endpoint + 'ultimos-30-dias', this.getAuthorization())
+        .pipe(
+            map((res) => res.dados),
+            catchError((erro: HttpErrorResponse) => this.processErrorHttp(erro))
+        );
+    }
+
     processErrorHttp(err: HttpErrorResponse){
         let message = '';
 

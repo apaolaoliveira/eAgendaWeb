@@ -25,7 +25,34 @@
                 </a>
             </div>
 
-            <!-- todo: Add filter by category -->
+            <div class="row g-2 mt-2" style="cursor: pointer;">
+                <div class="col-6 col-lg-1" (click)="getAllExpenses()">
+                    <span
+                        ngbTooltip="All expenses"
+                        placement="bottom"
+                        class="badge rounded-pill w-100 p-2 fs-6 fw-semibold"
+                        [ngClass]="selectedFilter === 'all' ? 'border bg-secondary text-light' : 'bg-dark border'"
+                    >All</span>
+                </div>
+            
+                <div class="col-6 col-lg-1" (click)="filterOldExpenses()">
+                    <span
+                        ngbTooltip="Old expenses"
+                        placement="bottom"
+                        class="badge rounded-pill p-2 w-auto fs-6 fw-semibold ms-1"
+                        [ngClass]="selectedFilter === 'old' ? 'border bg-secondary text-light' : 'bg-dark border'"
+                    >Previous</span>
+                </div>
+
+                <div class="col-6 col-lg-1" (click)="filterPastExpenses()">
+                    <span
+                        ngbTooltip="Past 30 days expenses"
+                        placement="bottom"
+                        class="badge rounded-pill w-auto p-2 fs-6 fw-semibold"
+                        [ngClass]="selectedFilter === 'past' ? 'border bg-secondary text-light' : 'bg-dark border'"
+                    >Past Month</span>
+                </div>                
+            </div>
 
             <div class="row mt-3 g-2">
                 <div class="col-12 col-lg-4 col-md-6" *ngFor="let expense of expenses">

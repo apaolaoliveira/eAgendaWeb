@@ -4,13 +4,14 @@ import { ToastrService } from 'ngx-toastr';
 import { map } from 'rxjs';
 import { ListExpenseViewModel } from '../models/list-expense.view-model';
 import { ExpensesService } from '../services/expense.service';
+import { ViewExpenseViewModel } from '../models/view-expense.view-model';
 
 @Component({
   selector: 'app-delete-expense',
   templateUrl: './delete-expense.component.html'
 })
 export class DeleteExpenseComponent implements OnInit{
-  expenseVM!: ListExpenseViewModel;
+  expenseVM!: ViewExpenseViewModel;
 
   constructor(
     private expenseService: ExpensesService,
