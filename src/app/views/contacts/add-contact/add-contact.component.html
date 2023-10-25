@@ -33,6 +33,8 @@
                     <input
                         formControlName="telefone"
                         [ngClass]="validateField('telefone')? 'is-invalid' :''"
+                        [(ngModel)]="phone"
+                        (input)="applyPhoneMask($event)"
                         class="form-control"
                         type="text"
                         placeholder="Contact's phone"

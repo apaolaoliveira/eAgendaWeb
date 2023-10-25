@@ -12,6 +12,17 @@ import { ToastrService } from 'ngx-toastr';
 export class AddContactComponent implements OnInit{
   form!: FormGroup;
   contactVM!: FormContactViewModel;
+  phone: string = ''
+
+  applyPhoneMask(event: any) {
+    this.phone = event.target.value.replace(/\D/g, '');
+
+    if (this.phone.length <= 10) {
+      this.phone = this.phone.replace(/(\d{2})(\d{0,4})(\d{0,4})/, '($1) $2-$3');
+    } else {
+      this.phone = this.phone.replace(/(\d{2})(\d{0,5})(\d{0,4})/, '($1) $2-$3');
+    }
+  }
 
   constructor(
     private formBuilder: FormBuilder,
