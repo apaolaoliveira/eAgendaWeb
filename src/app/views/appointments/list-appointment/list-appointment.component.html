@@ -17,6 +17,72 @@
                 </a>
             </div>
 
+            <!-- <div class="row g-2 mt-2" style="cursor: pointer;">
+                <div class="col-6 col-lg-1" (click)="getAllAppointments()">
+                    <span
+                        ngbTooltip="All appointments"
+                        placement="bottom"
+                        class="badge rounded-pill w-100 p-2 fs-6 fw-semibold"
+                        [ngClass]="selectedFilter === 'all' ? 'border bg-secondary text-light' : 'bg-dark border'"
+                    >All</span>
+                </div>
+
+                <div class="col-6 col-lg-1" (click)="pastFilter()">
+                    <span
+                        ngbTooltip="Past Appointments"
+                        placement="bottom"
+                        class="badge rounded-pill w-100 p-2 fs-6 fw-semibold"
+                        [ngClass]="selectedFilter === 'past' ? 'border bg-secondary text-light' : 'bg-dark border'"
+                    >Past</span>
+                </div>
+            
+                <div class="col-6 col-lg-1" (click)="presentFilter()">
+                    <span
+                        ngbTooltip="Present Appointments"
+                        placement="bottom"
+                        class="badge rounded-pill w-100 p-2 fs-6 fw-semibold"
+                        [ngClass]="selectedFilter === 'present' ? 'border bg-secondary text-light' : 'bg-dark border'"
+                    >Present</span>
+                </div>
+
+                <div class="col-6 col-lg-1" (click)="selectedFilter = 'future'">
+                    <span
+                        ngbTooltip="Future Appointments"
+                        placement="bottom"
+                        class="badge rounded-pill w-100 p-2 fs-6 fw-semibold"
+                        [ngClass]="selectedFilter === 'future' ? 'border bg-secondary text-light' : 'bg-dark border'"
+                    >
+                        Future                 
+                        <i class="bi bi-caret-down-fill" style="font-size: 13px;"></i>
+                    </span>
+                </div>
+
+                <div *ngIf="selectedFilter === 'future'" >
+                    <div class="app-container">
+                        <div class="mb-3">
+                            <label for="startDate">Start Date:</label>
+                            <input
+                                type="date"
+                                class="form-control w-auto"
+                                id="startDate"
+                                [(ngModel)]="startDate"
+                            />
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="endDate">End Date:</label>
+                            <input
+                                type="date"
+                                class="form-control w-auto"
+                                id="endDate"
+                                [(ngModel)]="endDate"
+                            />
+                        </div>
+                        <button class="btn btn-dark w-100" (click)="futureFilter()">Save</button>
+                    </div>
+                </div>
+            </div> -->
+
             <div class="row mt-3 g-2">
                 <div class="col-12 col-lg-4 col-md-6" *ngFor="let appointment of appointments">
                     <app-card-appointments [appointment]="appointment" [isListScreen]="true"></app-card-appointments>

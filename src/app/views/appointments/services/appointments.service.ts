@@ -67,6 +67,33 @@ export class AppointmentsService {
         );
     }
 
+    public pastFilter(): Observable<ListAppointmentViewModel[]>{
+        return this.http
+        .get<any>(this.endpoint + `passados/${new Date().toISOString()}`, this.getAuthorization())
+        .pipe(
+            map((res) => res.dados),
+            catchError((err: HttpErrorResponse) => this.processErrorHttp(err))
+        );
+    }
+
+    public presentFilter(): Observable<ListAppointmentViewModel[]>{
+        return this.http
+        .get<any>(this.endpoint + "hoje", this.getAuthorization())
+        .pipe(
+            map((res) => res.dados),
+            catchError((err: HttpErrorResponse) => this.processErrorHttp(err))
+        );
+    }
+
+    public futureFilter(startDate: string, endDate: string): Observable<ListAppointmentViewModel[]>{
+        return this.http
+        .get<any>(this.endpoint + `futuros/${startDate}=${endDate}`, this.getAuthorization())
+        .pipe(
+            map((res) => res.dados),
+            catchError((err: HttpErrorResponse) => this.processErrorHttp(err))
+        );
+    }
+
     processErrorHttp(err: HttpErrorResponse){
         let message = '';
 

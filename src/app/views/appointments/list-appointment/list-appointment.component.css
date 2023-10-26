@@ -1,0 +1,9 @@
+.app-container {
+    background-color: #6c757d;
+    padding: 15px;
+    border-radius: 8px;
+    color: #eaeaea;
+    position: absolute;
+    margin-left: 230px;
+    z-index: 9999;
+}
