@@ -1,4 +1,5 @@
 <app-navbar></app-navbar>
+<app-loading *ngIf="isLoading$ | async"></app-loading>
 
 <main>
   <router-outlet></router-outlet>

@@ -4,6 +4,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { NgbCollapseModule, NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
 import { AuthModule } from './auth/auth.module';
+import { LoadingModule } from './loading/loading.module';
 
 @NgModule({
   declarations: [
@@ -15,11 +16,13 @@ import { AuthModule } from './auth/auth.module';
     NgbCollapseModule,
     NgbTooltip,
     NgClass,
-    AuthModule
+    AuthModule,
+    LoadingModule
   ],
   exports: [
     NavbarComponent,
-    AuthModule
+    AuthModule,
+    LoadingModule
   ]
 })
 export class CoreModule { }
