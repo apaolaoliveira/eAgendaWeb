@@ -1,11 +1,11 @@
-<section class="mt-5">
+<section class="mt-5" *ngIf="user$ | async as user">
     <div class="container">
         <div class="card">
             <div class="row align-items-center gy-3 p-5">
                 <div class="col-12 col-md-7">
                     <h1 class="card-title fw-semibold">Dashboard</h1>
                 
-                    <h2 class="fw-semibold fs-4">Welcome to e-Agenda!</h2>
+                    <h2 class="fw-semibold fs-4">Hi {{ user.nome }}, welcome to e-Agenda!</h2>
 
                     <section id="info" class="fs-5">
                         <p class="mt-4">

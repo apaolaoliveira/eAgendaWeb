@@ -1,10 +1,11 @@
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable, catchError, map, tap, throwError } from "rxjs";
+import { BehaviorSubject, Observable, catchError, map, tap, throwError } from "rxjs";
 import { SignUpUserViewModel } from "../models/signup-user.view-model";
 import { TokenViewModel } from "../models/token.view-model";
 import { localStorageService } from "./local-storage.service";
 import { LoginUserViewModel } from "../models/login-user.view-model";
+import { UserTokenViewModel } from "../models/user-token.view-model";
 
 @Injectable()
 export class AuthService {
@@ -13,10 +14,18 @@ export class AuthService {
     private endpointSignUp: string = this.endpoint + 'registrar';
     private endpointLogin: string = this.endpoint + 'autenticar';
 
+    private authUser: BehaviorSubject<UserTokenViewModel | undefined>;
+
     constructor(
         private http: HttpClient,
         private localStorage: localStorageService
-    ){}
+    ){
+        this.authUser = new BehaviorSubject<UserTokenViewModel | undefined>(undefined);
+    }
+
+    public getAuthUser(){
+        return this.authUser.asObservable();
+    }
 
     public signUpUser(user: SignUpUserViewModel): Observable<TokenViewModel>{
         return this.http
@@ -34,8 +43,17 @@ export class AuthService {
         .pipe(
             map((res) => res.dados),
             tap((data: TokenViewModel) => this.localStorage.saveLocalData(data)),
+            tap((data: TokenViewModel) => this.loginNotifier(data.usuarioToken)),
             catchError((err: HttpErrorResponse) => this.processErrorHttp(err))
         );
+    }
+
+    private loginNotifier(user: UserTokenViewModel): void{
+        this.authUser.next(user);
+    }
+
+    private logOutNotifier(): void{
+        this.authUser.next(undefined);
     }
 
     processErrorHttp(err: HttpErrorResponse){
