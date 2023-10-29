@@ -9,6 +9,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { DashboardModule } from './views/dashboard/dashboard.module';
 import { CoreModule } from './core/core.module';
 import { HttpClientModule } from '@angular/common/http';
+import { SignUpModule } from './views/sign-up/sign-up.module';
+import { LoginModule } from './views/login/login.module';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
     }),
 
     CoreModule,
+    SignUpModule,
+    LoginModule,
     DashboardModule
   ],
   providers: [],

@@ -5,13 +5,15 @@ import { environment } from "src/environments/environment";
 import { FormCategoryViewModel } from "../models/form-category.view-model";
 import { ListCategoryViewModel } from "../models/list-category.view-model";
 import { ViewCategoryViewModel } from "../models/view-category.view-model";
+import { localStorageService } from "src/app/core/auth/services/local-storage.service";
 
 @Injectable()
 export class CategoriesService {
     private endpoint: string = 'https://e-agenda-web-api.onrender.com/api/categorias/';
 
     constructor(
-        private http: HttpClient
+        private http: HttpClient,
+        private localStorage: localStorageService
     ){}
 
     public add(category: FormCategoryViewModel): Observable<FormCategoryViewModel> {
@@ -81,7 +83,7 @@ export class CategoriesService {
     }
 
     private getAuthorization(){
-        const token = environment.apiKey;
+        const token = this.localStorage.getLocalData()?.chave;
 
         return {
             headers: new HttpHeaders({

@@ -5,13 +5,15 @@ import { environment } from "src/environments/environment";
 import { FormContactViewModel } from "../models/form-contact.view-model";
 import { ListContactViewModel } from "../models/list-contact.view-model";
 import { ViewContactViewModel } from "../models/view-contact.view-model";
+import { localStorageService } from "src/app/core/auth/services/local-storage.service";
 
 @Injectable()
 export class ContactsService {
     private endpoint: string = 'https://e-agenda-web-api.onrender.com/api/contatos/';
 
     constructor(
-        private http: HttpClient
+        private http: HttpClient,
+        private localStorage: localStorageService
     ){}
 
     public add(contact: FormContactViewModel): Observable<FormContactViewModel> {
@@ -90,7 +92,7 @@ export class ContactsService {
     }
 
     private getAuthorization(){
-        const token = environment.apiKey;
+        const token = this.localStorage.getLocalData()?.chave;
 
         return {
             headers: new HttpHeaders({

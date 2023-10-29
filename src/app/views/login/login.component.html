@@ -1,0 +1,54 @@
+<section class="mt-5">
+    <div class="container py-3 px-3 px-md-5">
+        <div class="row d-flex align-items-center justify-content-center h-100">
+            <div class="col-md-8 col-lg-7 col-xl-6">
+                <img
+                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+                    class="img-fluid"
+                />
+            </div>
+            <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+                <form [formGroup]="form!" (ngSubmit)="login()">
+                    <h1 class="text-primary fw-semibold">User login</h1>
+
+                    <div class="form-group my-3 position-relative">
+                        <label class="form-label" for="email">Email:</label>
+                        <input
+                            formControlName="email"
+                            [ngClass]="validateField('email') ? 'is-invalid' : ''"
+                            type="text"
+                            class="form-control form-control-lg"
+                        />
+                    </div>
+
+                    <div class="form-group my-3 position-relative">
+                        <label class="form-label" for="senha">Password:</label>
+                        <input
+                            formControlName="senha"
+                            [ngClass]="validateField('senha') ? 'is-invalid' : ''"
+                            type="password"
+                            class="form-control form-control-lg"
+                        />
+                    </div>
+
+                    <div class="form-group my-3">
+                        Are you not a user yet?
+                        <a
+                            role="button"
+                            class="text-primary text-decoration-none"
+                            routerLink="/sign-up"
+                        >Click here to sign up!</a>
+                    </div>
+
+                    <div class="card-footer g-grid d-flex gap-1 mt-4">
+                        <button type="submit" class="btn btn-primary px-5">
+                            <i class="bi bi-arrow-right me-2"></i>
+                            Login
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+

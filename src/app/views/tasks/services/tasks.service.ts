@@ -5,13 +5,15 @@ import { environment } from "src/environments/environment";
 import { FormTaskViewModel } from "../models/form-task.view-model";
 import { ListTaskViewModel } from "../models/list-task.view-model";
 import { ViewTaskViewModel } from "../models/view-task.view-model";
+import { localStorageService } from "src/app/core/auth/services/local-storage.service";
 
 @Injectable()
 export class TasksService {
     private endpoint: string = 'https://e-agenda-web-api.onrender.com/api/tarefas/';
 
     constructor(
-        private http: HttpClient
+        private http: HttpClient,
+        private localStorage: localStorageService
     ){}
 
     public add(task: FormTaskViewModel): Observable<FormTaskViewModel> {
@@ -81,7 +83,7 @@ export class TasksService {
     }
 
     private getAuthorization(){
-        const token = environment.apiKey;
+        const token = this.localStorage.getLocalData()?.chave;
 
         return {
             headers: new HttpHeaders({

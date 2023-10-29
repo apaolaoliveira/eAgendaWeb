@@ -5,13 +5,15 @@ import { environment } from "src/environments/environment";
 import { Observable, catchError, map, throwError } from "rxjs";
 import { ListAppointmentViewModel } from "../models/list-appointment.view-module";
 import { ViewAppointmentViewModel } from "../models/view-appointment.view-model";
+import { localStorageService } from "src/app/core/auth/services/local-storage.service";
 
 @Injectable()
 export class AppointmentsService {
     private endpoint: string = 'https://e-agenda-web-api.onrender.com/api/compromissos/';
 
     constructor(
-        private http: HttpClient
+        private http: HttpClient,
+        private localStorage: localStorageService
     ){}
 
     public add(appointment: FormAppointmentViewModel): Observable<FormAppointmentViewModel>{
@@ -108,7 +110,7 @@ export class AppointmentsService {
     }
 
     private getAuthorization(){
-        const token = environment.apiKey;
+        const token = this.localStorage.getLocalData()?.chave;
 
         return {
             headers: new HttpHeaders({

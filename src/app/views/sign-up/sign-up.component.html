@@ -1,0 +1,79 @@
+<section class="mt-2">
+    <div class="container py-3 px-3 px-md-5">
+        <div class="row d-flex align-items-center justify-content-center h-100">
+            <div class="col-md-8 col-lg-7 col-xl-6">
+                <img
+                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+                    class="img-fluid"
+                    alt="Phone image"
+                />
+            </div>
+
+            <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1 mt-5 mt-md-0">
+                <form [formGroup]="form!" (ngSubmit)="signUp()">
+                    <h1 class="text-primary fw-semibold">User sign up</h1>
+            
+                    <div class="form-group my-3 position-relative">
+                        <label class="form-label" for="nome">Name:</label>
+
+                        <input
+                            formControlName="nome"
+                            [ngClass]="validateField('nome') ? 'is-invalid' : ''"
+                            type="text"
+                            class="form-control form-control-lg"
+                        />
+                    </div>
+                
+                    <div class="form-group my-3 position-relative">
+                        <label class="form-label" for="email">Email:</label>
+                        <input
+                            formControlName="email"
+                            [ngClass]="validateField('email') ? 'is-invalid' : ''"
+                            type="email"
+                            class="form-control form-control-lg"
+                        />
+                    </div>
+                
+                    <!-- Password input -->
+                    <div class="form-group my-3 position-relative">
+                        <label class="form-label" for="senha">Password:</label>
+                        <input
+                            formControlName="senha"
+                            [ngClass]="validateField('senha') ? 'is-invalid' : ''"
+                            type="password"
+                            class="form-control form-control-lg"
+                        />
+                    </div>
+                
+                    <!-- Password input -->
+                    <div class="form-group my-3 position-relative">
+                        <label class="form-label" for="confirmarSenha">Confirm Password:</label>                        
+                        <input
+                            formControlName="confirmarSenha"
+                            [ngClass]="validateField('confirmarSenha') ? 'is-invalid' : ''"
+                            type="password"
+                            class="form-control form-control-lg"
+                        />
+                    </div>
+                
+                    <!-- Submit button -->
+                    <div class="d-flex gap-1 mt-4">
+                        <button type="submit" class="btn btn-primary px-5">
+                            <i class="bi bi-floppy me-2"></i>
+                            Sign Up
+                        </button>
+
+                        <button
+                            routerLink="/login"
+                            type="button"
+                            class="btn btn-outline-primary px-5"
+                        >
+                            <i class="bi bi-arrow-left me-2"></i>
+                            Back
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
