@@ -1,24 +1,21 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { FormAppointmentViewModel } from "../models/form-appointment.view-model";
-import { environment } from "src/environments/environment";
 import { Observable, catchError, map, throwError } from "rxjs";
 import { ListAppointmentViewModel } from "../models/list-appointment.view-module";
 import { ViewAppointmentViewModel } from "../models/view-appointment.view-model";
-import { localStorageService } from "src/app/core/auth/services/local-storage.service";
 
 @Injectable()
 export class AppointmentsService {
     private endpoint: string = 'https://e-agenda-web-api.onrender.com/api/compromissos/';
 
     constructor(
-        private http: HttpClient,
-        private localStorage: localStorageService
+        private http: HttpClient
     ){}
 
     public add(appointment: FormAppointmentViewModel): Observable<FormAppointmentViewModel>{
         return this.http
-        .post<any>(this.endpoint, appointment, this.getAuthorization())
+        .post<any>(this.endpoint, appointment)
         .pipe(
             map((res) => res.dados),
             catchError((err: HttpErrorResponse) => this.processErrorHttp(err))
@@ -27,7 +24,7 @@ export class AppointmentsService {
 
     public edit(id: string, contact: FormAppointmentViewModel): Observable<FormAppointmentViewModel> {
         return this.http
-        .put<any>(this.endpoint + id, contact, this.getAuthorization())
+        .put<any>(this.endpoint + id, contact)
         .pipe(
             map((res) => res.dados),
             catchError((err: HttpErrorResponse) => this.processErrorHttp(err))
@@ -36,7 +33,7 @@ export class AppointmentsService {
 
     public delete(id: string): Observable<any> {
         return this.http
-        .delete(this.endpoint + id, this.getAuthorization())
+        .delete(this.endpoint + id)
         .pipe(
             catchError((err: HttpErrorResponse) => this.processErrorHttp(err))
         );
@@ -44,7 +41,7 @@ export class AppointmentsService {
 
     public selectById(id: string): Observable<FormAppointmentViewModel>{
         return this.http
-        .get<any>(this.endpoint + id, this.getAuthorization())
+        .get<any>(this.endpoint + id)
         .pipe(
             map((res) => res.dados),
             catchError((err: HttpErrorResponse) => this.processErrorHttp(err))
@@ -53,7 +50,7 @@ export class AppointmentsService {
 
     public getAll(): Observable<ListAppointmentViewModel[]>{
         return this.http
-        .get<any>(this.endpoint, this.getAuthorization())
+        .get<any>(this.endpoint)
         .pipe(
             map((res) => res.dados),
             catchError((err: HttpErrorResponse) => this.processErrorHttp(err))
@@ -62,7 +59,7 @@ export class AppointmentsService {
 
     public selectFullAppointmentById(id: string): Observable<ViewAppointmentViewModel> {
         return this.http
-        .get<any>(this.endpoint + 'visualizacao-completa/' + id, this.getAuthorization())
+        .get<any>(this.endpoint + 'visualizacao-completa/' + id)
         .pipe(
             map((res) => res.dados),
             catchError((err: HttpErrorResponse) => this.processErrorHttp(err))
@@ -71,7 +68,7 @@ export class AppointmentsService {
 
     public pastFilter(): Observable<ListAppointmentViewModel[]>{
         return this.http
-        .get<any>(this.endpoint + `passados/${new Date().toISOString()}`, this.getAuthorization())
+        .get<any>(this.endpoint + `passados/${new Date().toISOString()}`)
         .pipe(
             map((res) => res.dados),
             catchError((err: HttpErrorResponse) => this.processErrorHttp(err))
@@ -80,7 +77,7 @@ export class AppointmentsService {
 
     public presentFilter(): Observable<ListAppointmentViewModel[]>{
         return this.http
-        .get<any>(this.endpoint + "hoje", this.getAuthorization())
+        .get<any>(this.endpoint + "hoje")
         .pipe(
             map((res) => res.dados),
             catchError((err: HttpErrorResponse) => this.processErrorHttp(err))
@@ -89,7 +86,7 @@ export class AppointmentsService {
 
     public futureFilter(startDate: string, endDate: string): Observable<ListAppointmentViewModel[]>{
         return this.http
-        .get<any>(this.endpoint + `futuros/${startDate}=${endDate}`, this.getAuthorization())
+        .get<any>(this.endpoint + `futuros/${startDate}=${endDate}`)
         .pipe(
             map((res) => res.dados),
             catchError((err: HttpErrorResponse) => this.processErrorHttp(err))
@@ -107,16 +104,5 @@ export class AppointmentsService {
         else message = err.error?.erros[0];
 
         return throwError(() => new Error(message));
-    }
-
-    private getAuthorization(){
-        const token = this.localStorage.getLocalData()?.chave;
-
-        return {
-            headers: new HttpHeaders({
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`
-            })
-        };
     }
 }

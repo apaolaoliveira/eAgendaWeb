@@ -1,24 +1,21 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http'
+import { HttpClient, HttpErrorResponse } from '@angular/common/http'
 import { Observable, catchError, map, throwError } from "rxjs";
-import { environment } from "src/environments/environment";
 import { FormContactViewModel } from "../models/form-contact.view-model";
 import { ListContactViewModel } from "../models/list-contact.view-model";
 import { ViewContactViewModel } from "../models/view-contact.view-model";
-import { localStorageService } from "src/app/core/auth/services/local-storage.service";
 
 @Injectable()
 export class ContactsService {
     private endpoint: string = 'https://e-agenda-web-api.onrender.com/api/contatos/';
 
     constructor(
-        private http: HttpClient,
-        private localStorage: localStorageService
+        private http: HttpClient
     ){}
 
     public add(contact: FormContactViewModel): Observable<FormContactViewModel> {
         return this.http
-        .post<any>(this.endpoint, contact, this.getAuthorization())
+        .post<any>(this.endpoint, contact)
         .pipe(
             map((res) => res.dados),
             catchError((err: HttpErrorResponse) => this.processErrorHttp(err))
@@ -27,7 +24,7 @@ export class ContactsService {
 
     public edit(id: string, contact: FormContactViewModel): Observable<FormContactViewModel> {
         return this.http
-        .put<any>(this.endpoint + id, contact, this.getAuthorization())
+        .put<any>(this.endpoint + id, contact)
         .pipe(
             map((res) => res.dados),
             catchError((err: HttpErrorResponse) => this.processErrorHttp(err))
@@ -36,7 +33,7 @@ export class ContactsService {
 
     public delete(id: string): Observable<any> {
         return this.http
-        .delete(this.endpoint + id, this.getAuthorization())
+        .delete(this.endpoint + id)
         .pipe(
             catchError((err: HttpErrorResponse) => this.processErrorHttp(err))
         );
@@ -44,7 +41,7 @@ export class ContactsService {
 
     public selectById(id: string): Observable<FormContactViewModel> {
         return this.http
-        .get<any>(this.endpoint + id, this.getAuthorization())
+        .get<any>(this.endpoint + id)
         .pipe(
             map((res) => res.dados),
             catchError((err: HttpErrorResponse) => this.processErrorHttp(err))
@@ -53,7 +50,7 @@ export class ContactsService {
 
     public getAll(): Observable<ListContactViewModel[]>{
         return this.http
-        .get<any>(this.endpoint, this.getAuthorization())
+        .get<any>(this.endpoint)
         .pipe(
             map((res) => res.dados),
             catchError((err: HttpErrorResponse) => this.processErrorHttp(err))
@@ -62,7 +59,7 @@ export class ContactsService {
 
     public selectFullContactById(id: string): Observable<ViewContactViewModel> {
         return this.http
-        .get<any>(this.endpoint + 'visualizacao-completa/' + id, this.getAuthorization())
+        .get<any>(this.endpoint + 'visualizacao-completa/' + id)
         .pipe(
             map((res) => res.dados),
             catchError((err: HttpErrorResponse) => this.processErrorHttp(err))
@@ -71,7 +68,7 @@ export class ContactsService {
 
     public updateFavorite(id: string): Observable<ListContactViewModel>{
         return this.http
-        .put<any>(this.endpoint + 'favoritos/' + id, {}, this.getAuthorization())
+        .put<any>(this.endpoint + 'favoritos/' + id, {})
         .pipe(
             map((res) => res.dados),
             catchError((err: HttpErrorResponse) => this.processErrorHttp(err))
@@ -89,16 +86,5 @@ export class ContactsService {
         else message = err.error?.erros[0];
 
         return throwError(() => new Error(message));
-    }
-
-    private getAuthorization(){
-        const token = this.localStorage.getLocalData()?.chave;
-
-        return {
-            headers: new HttpHeaders({
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`
-            })
-        };
     }
 }
