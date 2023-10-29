@@ -20,6 +20,14 @@ body {
     padding: 20px;
 }
 
+.list-card {
+    transition: transform 0.3s;
+}
+
+.list-card:hover{
+    transform: scale(1.01);
+}
+
 .ngx-toastr{
     margin: 5px !important;
 }
