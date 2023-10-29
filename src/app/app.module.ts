@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -11,6 +11,11 @@ import { CoreModule } from './core/core.module';
 import { HttpClientModule } from '@angular/common/http';
 import { SignUpModule } from './views/sign-up/sign-up.module';
 import { LoginModule } from './views/login/login.module';
+import { AuthService } from './core/auth/services/auth.service';
+
+function logSaveUserFactory(authService: AuthService){
+  return () => authService.logSaveUser();
+}
 
 @NgModule({
   declarations: [
@@ -33,7 +38,14 @@ import { LoginModule } from './views/login/login.module';
     LoginModule,
     DashboardModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: logSaveUserFactory,
+      deps: [AuthService],
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -59,6 +59,16 @@ export class AuthService {
         );
     }
 
+    public logSaveUser(): void {
+        const data = this.localStorage.getLocalData();
+
+        if(!data) return;
+
+        const isValidToken: boolean = new Date(data.dataExpiracao) > new Date();
+
+        if(isValidToken) this.loginNotifier(data.usuarioToken);
+    }
+
     private loginNotifier(user: UserTokenViewModel): void{
         this.authUser.next(user);
     }
