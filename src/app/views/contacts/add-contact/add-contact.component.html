@@ -1,87 +1,89 @@
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-12 col-md-10 col-lg-5 mx-auto app-card">
-            <div class="text-md-start">
-                <h1 class="fw-bold d-flex justify-content-center">Create new contact</h1>
-            </div>
-
-            <form [formGroup]="form!" (ngSubmit)="save()" class="mt-4 fw-semibold">
-                <div class="form-group mb-3 position-relative">
-                    <label class="form-label">Name:</label>
-                    <input
-                        formControlName="nome"
-                        [ngClass]="validateField('nome')? 'is-invalid' :''"
-                        class="form-control"
-                        type="text"
-                        placeholder="Contact's name"
-                    />
+<div class="d-flex align-items-center" style="height: 90vh;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-10 col-lg-5 mx-auto app-card">
+                <div class="text-md-start">
+                    <h1 class="fw-bold d-flex justify-content-center">Create new contact</h1>
                 </div>
 
-                <div class="form-group mb-3 position-relative">
-                    <label class="form-label">E-mail:</label>
-                    <input
-                        formControlName="email"
-                        [ngClass]="validateField('email')? 'is-invalid' :''"
-                        class="form-control"
-                        type="text"
-                        placeholder="Contact's e-mail"
-                    />
-                </div>
+                <form [formGroup]="form!" (ngSubmit)="save()" class="mt-4 fw-semibold">
+                    <div class="form-group mb-3 position-relative">
+                        <label class="form-label">Name:</label>
+                        <input
+                            formControlName="nome"
+                            [ngClass]="validateField('nome')? 'is-invalid' :''"
+                            class="form-control"
+                            type="text"
+                            placeholder="Contact's name"
+                            />
+                        </div>
 
-                <div class="form-group mb-3 position-relative">
-                    <label class="form-label">Phone:</label>
-                    <input
+                        <div class="form-group mb-3 position-relative">
+                            <label class="form-label">E-mail:</label>
+                            <input
+                            formControlName="email"
+                            [ngClass]="validateField('email')? 'is-invalid' :''"
+                            class="form-control"
+                            type="text"
+                            placeholder="Contact's e-mail"
+                            />
+                        </div>
+
+                    <div class="form-group mb-3 position-relative">
+                        <label class="form-label">Phone:</label>
+                        <input
                         formControlName="telefone"
-                        [ngClass]="validateField('telefone')? 'is-invalid' :''"
-                        [(ngModel)]="phone"
-                        (input)="applyPhoneMask($event)"
-                        class="form-control"
-                        type="text"
-                        placeholder="Contact's phone"
-                    />
-                </div>
+                            [ngClass]="validateField('telefone')? 'is-invalid' :''"
+                            [(ngModel)]="phone"
+                            (input)="applyPhoneMask($event)"
+                            class="form-control"
+                            type="text"
+                            placeholder="Contact's phone"
+                            />
+                        </div>
 
-                <div class="form-group mb-3 position-relative">
-                    <label class="form-label">Position:</label>
-                    <input
-                        formControlName="cargo"
-                        [ngClass]="validateField('cargo')? 'is-invalid' :''"
-                        class="form-control"
-                        type="text"
-                        placeholder="Contact's position"
-                    />
-                </div>
+                        <div class="form-group mb-3 position-relative">
+                            <label class="form-label">Position:</label>
+                            <input
+                            formControlName="cargo"
+                            [ngClass]="validateField('cargo')? 'is-invalid' :''"
+                            class="form-control"
+                            type="text"
+                            placeholder="Contact's position"
+                            />
+                        </div>
 
-                <div class="form-group mb-3 position-relative">
-                    <label class="form-label">Company:</label>
-                    <input
-                        formControlName="empresa"
-                        [ngClass]="validateField('empresa')? 'is-invalid' :''"
-                        class="form-control"
-                        type="text"
-                        placeholder="Contact's company"
-                    />
-                </div>
+                        <div class="form-group mb-3 position-relative">
+                            <label class="form-label">Company:</label>
+                            <input
+                            formControlName="empresa"
+                            [ngClass]="validateField('empresa')? 'is-invalid' :''"
+                            class="form-control"
+                            type="text"
+                            placeholder="Contact's company"
+                        />
+                    </div>
 
-                <div class="d-flex gap-1 mt-5 justify-content-center">
-                    <button                        
-                        type="submit"
-                        class="btn btn-primary px-5"
-                    >
-                        <i class="bi bi-floppy me-2"></i>
-                        Save
-                    </button>
+                    <div class="d-flex gap-1 mt-5 justify-content-center">
+                        <button                        
+                            type="submit"
+                            class="btn btn-primary px-5"
+                        >
+                            <i class="bi bi-floppy me-2"></i>
+                            Save
+                        </button>
 
-                    <button
-                        routerLink="/contacts/list"
-                        type="button"
-                        class="btn btn-outline-light px-5"
-                    >
-                        <i class="bi bi-arrow-left me-2"></i>
-                        Back
-                    </button>
-                </div>
-            </form>
+                        <button
+                            routerLink="/contacts/list"
+                            type="button"
+                            class="btn btn-outline-light px-5"
+                        >
+                            <i class="bi bi-arrow-left me-2"></i>
+                            Back
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

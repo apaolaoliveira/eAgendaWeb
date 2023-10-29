@@ -1,119 +1,123 @@
-<div class="container mb-5">
-    <div class="row">
-        <div class="col-12 col-md-10 col-lg-6 mx-auto mt-5 app-card">
-            <div class="text-md-start">
-                <h1 class="fw-bold d-flex justify-content-center">Add new appointment</h1>
-            </div>
+<div class="d-flex align-items-center" style="height: 90vh;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-10 col-lg-6 mx-auto mt-5 app-card">
+                <div class="text-md-start">
+                    <h1 class="fw-bold d-flex justify-content-center">Add new appointment</h1>
+                </div>
 
-            <form [formGroup]="form!"  (ngSubmit)="save()" class="mt-4">
-                <div class="form-group mb-3 position-relative">
-                    <label class="form-label">Subject:</label>
-                        <input
+                <form [formGroup]="form!"  (ngSubmit)="save()" class="mt-4">
+                    <div class="form-group mb-3 position-relative row">
+                        <div class="col-6">
+
+                            <label class="form-label">Subject:</label>
+                            <input
                             [ngClass]="validateField('assunto')? 'is-invalid' :''"
                             formControlName="assunto"
                             class="form-control"
                             type="text"
                             placeholder="Appointment's subject"
-                        />
-                </div>
+                            />
+                        </div>
 
-                <div class="form-group mb-3 position-relative">
-                    <label for="tipoLocal" class="form-label">Location Type:</label>
-                    <select
-                        [ngClass]="validateField('tipoLocal') ? 'is-invalid' : ''"
-                        name="tipoLocal"
-                        class="form-select"
-                        formControlName="tipoLocal"
-                    >
-                        <option [ngValue]="0">Online</option>
-                        <option [ngValue]="1">In person</option>
-                    </select>
-                </div>
-
-                <div class="mb-3" *ngIf="form.get('tipoLocal')?.value == 0">
-                    <label for="link" class="form-label">Link:</label>
-                    <input
-                        type="text"
-                        name="link"
-                        class="form-control"
-                        formControlName="link"
-                        placeholder="Appointment's link"
-                    />
-                </div>
-        
-                <div class="mb-3" *ngIf="form.get('tipoLocal')?.value == 1">
-                    <label for="local" class="form-label">Location:</label>
-                    <input
-                        type="text"
-                        name="local"
-                        class="form-control"
-                        formControlName="local"
-                        placeholder="Appointment's location"
-                    />
-                </div>
-
-                <div class="form-group mb-3 position-relative">
-                    <label class="form-label">Date:</label>
-                    <input 
-                        [ngClass]="validateField('data')? 'is-invalid' :''"
-                        class="form-control" 
-                        formControlName="data" 
-                        type="date" />
-                </div>
-
-                <div class="form-group mb-3 position-relative row">
-                    <div class="col-6">
-                        <label class="form-label">Start time:</label>
-                        <input
-                            [ngClass]="validateField('horaInicio')? 'is-invalid' :''"
-                            formControlName="horaInicio"
-                            class="form-control"
-                            type="time"
-                            placeholder="Appointment's start time"
-                        />
+                        <div class="col">
+                            <label for="tipoLocal" class="form-label">Location Type:</label>
+                            <select
+                                [ngClass]="validateField('tipoLocal') ? 'is-invalid' : ''"
+                                name="tipoLocal"
+                                class="form-select"
+                                formControlName="tipoLocal"
+                            >                        
+                                <option [ngValue]="0">Online</option>
+                                <option [ngValue]="1">In person</option>
+                            </select>
+                        </div>
                     </div>
 
-                    <div class="col">
-                        <label class="form-label">End time:</label>
+                    <div class="mb-3" *ngIf="form.get('tipoLocal')?.value == 0">
+                        <label for="link" class="form-label">Link:</label>
                         <input
-                            [ngClass]="validateField('horaTermino')? 'is-invalid' :''"
-                            formControlName="horaTermino"
+                            type="text"
+                            name="link"
                             class="form-control"
-                            type="time"
-                            placeholder="Appointment's end time"
+                            formControlName="link"
+                            placeholder="Appointment's link"
                         />
                     </div>
-                </div>
-
-                <div class="form-group mb-3 position-relative">
-                    <label class="form-label">Contact:</label>
-                    <select class="form-select" name="contatoId" formControlName="contatoId" [ngClass]="validateField('contatoId')? 'is-invalid' :''">
-                        <option *ngFor="let contact of contacts" [ngValue]="contact.id">{{ contact.nome }}</option>
-                    </select>
-                </div>
-            
-                <div class="card-footer g-grid d-flex gap-1 mt-5 justify-content-center">
-                    <button
-                        data-cy="btnSave"
-                        type="submit"
-                        class="btn btn-primary px-5"
-                    >
-                        <i class="bi bi-floppy me-2"></i>
-                        Save
-                    </button>
                 
-                    <button
-                        routerLink="/appointments/list"
-                        type="button"
-                        class="btn btn-outline-light px-5"
-                    >
-                        <i class="bi bi-arrow-left me-2"></i>
-                        Back
-                    </button>
-                </div>
-            </form>
+                    <div class="mb-3" *ngIf="form.get('tipoLocal')?.value == 1">
+                        <label for="local" class="form-label">Location:</label>
+                        <input
+                            type="text"
+                            name="local"
+                            class="form-control"
+                            formControlName="local"
+                            placeholder="Appointment's location"
+                        />
+                    </div>
+
+                    <div class="form-group mb-3 position-relative">
+                        <label class="form-label">Date:</label>
+                        <input 
+                            [ngClass]="validateField('data')? 'is-invalid' :''"
+                            class="form-control" 
+                            formControlName="data" 
+                            type="date" />
+                    </div>
+
+                    <div class="form-group mb-3 position-relative row">
+                        <div class="col-6">
+                            <label class="form-label">Start time:</label>
+                            <input
+                                [ngClass]="validateField('horaInicio')? 'is-invalid' :''"
+                                formControlName="horaInicio"
+                                class="form-control"
+                                type="time"
+                                placeholder="Appointment's start time"
+                            />
+                        </div>
+
+                        <div class="col">
+                            <label class="form-label">End time:</label>
+                            <input
+                                [ngClass]="validateField('horaTermino')? 'is-invalid' :''"
+                                formControlName="horaTermino"
+                                class="form-control"
+                                type="time"
+                                placeholder="Appointment's end time"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="form-group mb-3 position-relative">
+                        <label class="form-label">Contact:</label>
+                        <select class="form-select" name="contatoId" formControlName="contatoId" [ngClass]="validateField('contatoId')? 'is-invalid' :''">
+                            <option *ngFor="let contact of contacts" [ngValue]="contact.id">{{ contact.nome }}</option>
+                        </select>
+                    </div>
+                
+                    <div class="card-footer g-grid d-flex gap-1 mt-5 justify-content-center">
+                        <button
+                            data-cy="btnSave"
+                            type="submit"
+                            class="btn btn-primary px-5"
+                        >
+                            <i class="bi bi-floppy me-2"></i>
+                            Save
+                        </button>
+                    
+                        <button
+                            routerLink="/appointments/list"
+                            type="button"
+                            class="btn btn-outline-light px-5"
+                        >
+                            <i class="bi bi-arrow-left me-2"></i>
+                            Back
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
-
 
