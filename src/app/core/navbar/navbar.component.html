@@ -13,7 +13,7 @@
         </button>
 
         <div class="collapse navbar-collapse" [ngbCollapse]="isCollapse == true">
-            <div class="links w-100 text-center">
+            <div class="links w-100 text-center" *ngIf="(user$ | async) == true">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-center">
                     <li class="nav-item">
                         <a
@@ -52,7 +52,8 @@
                         Tasks</a>
                     </li>
 
-                    <!-- <ul class="navbar-nav ms-auto fs-5 align-items-center">
+                    <ul class="navbar-nav ms-auto fs-5 align-items-center">
+                        <!--
                         <li class="nav-item">
                             <button
                                 class="nav-link btn text-light"
@@ -63,6 +64,7 @@
                                 <i class="bi" [ngClass]="isDarkMode? 'bi-moon' : 'bi-sun'"></i>
                             </button>
                         </li>
+                        --->
 
                         <li class="nav-item">
                             <button
@@ -76,6 +78,7 @@
                         </li>
                         <li class="nav-item">
                             <button
+                                (click)="logOut()"
                                 class="nav-link btn text-light"
                                 routerLink="/"
                                 ngbTooltip="Log out"
@@ -84,7 +87,7 @@
                                 <i class="bi bi-box-arrow-in-right"></i>
                             </button>
                         </li>
-                    </ul> -->
+                    </ul> 
                 </ul>
             </div>
         </div>

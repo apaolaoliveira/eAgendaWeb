@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable, catchError, map, tap, throwError } from "rxjs";
 import { SignUpUserViewModel } from "../models/signup-user.view-model";
@@ -13,6 +13,7 @@ export class AuthService {
 
     private endpointSignUp: string = this.endpoint + 'registrar';
     private endpointLogin: string = this.endpoint + 'autenticar';
+    private endpointLogOut: string = this.endpoint + 'sair';
 
     private authUser: BehaviorSubject<UserTokenViewModel | undefined>;
 
@@ -48,6 +49,16 @@ export class AuthService {
         );
     }
 
+    public logOut(): Observable<any>{
+        return this.http
+        .post<any>(this.endpointLogOut, {}, this.getAuthorization())
+        .pipe(
+            tap(() => this.logOutNotifier()),
+            tap(() => this.localStorage.deleteLocalData()),
+            catchError((err: HttpErrorResponse) => this.processErrorHttp(err))
+        );
+    }
+
     private loginNotifier(user: UserTokenViewModel): void{
         this.authUser.next(user);
     }
@@ -67,5 +78,16 @@ export class AuthService {
         else message = err.error?.erros[0];
 
         return throwError(() => new Error(message));
+    }
+
+    private getAuthorization(){
+        const token = this.localStorage.getLocalData()?.chave;
+
+        return {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`
+            })
+        };
     }
 }
